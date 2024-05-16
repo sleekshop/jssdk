@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+      "target": "es2020",
+      "module": "ESNext",
+      "baseUrl": "./src",
+      "outDir": "build",
+      "lib": ["es6", "dom", "es2019", "es2020"],
+      "sourceMap": true,
+      "allowJs": false,
+      "jsx": "react",
+      "declaration": true,
+      "moduleResolution": "node",
+      "forceConsistentCasingInFileNames": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "allowSyntheticDefaultImports": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "esModuleInterop": true
+    },
+    "include": ["src/**/*", "src/*.ts"]
+  }
