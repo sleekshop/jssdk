@@ -162,7 +162,7 @@ export default class ShopObjects {
             let createProduct = await this.instance.post('', {
                 licence_username: this.licence_username,
                 licence_password: this.licence_password,
-                license_secret_key: this.licence_secret_key,
+                licence_secret_key: this.licence_secret_key,
                 request: "create_product",
                 class: class_,
                 name: name,
@@ -205,7 +205,7 @@ export default class ShopObjects {
             let updateProduct = await this.instance.post('', {
                 licence_username: this.licence_username,
                 licence_password: this.licence_password,
-                license_secret_key: this.licence_secret_key,
+                licence_secret_key: this.licence_secret_key,
                 request: "update_product",
                 id_product: id_product,
                 name: name,
@@ -249,7 +249,7 @@ export default class ShopObjects {
             let createVariation = await this.instance.post('', {
                 licence_username: this.licence_username,
                 licence_password: this.licence_password,
-                license_secret_key: this.licence_secret_key,
+                licence_secret_key: this.licence_secret_key,
                 request: "create_variation",
                 id_product: id_product,
                 name: name,
@@ -280,7 +280,7 @@ export default class ShopObjects {
             let deleteProduct = await this.instance.post('', {
                 licence_username: this.licence_username,
                 licence_password: this.licence_password,
-                license_secret_key: this.licence_secret_key,
+                licence_secret_key: this.licence_secret_key,
                 request: "delete_product",
                 id_product: id_product,
             });
@@ -313,7 +313,7 @@ export default class ShopObjects {
             let updateContent = await this.instance.post('', {
                 licence_username: this.licence_username,
                 licence_password: this.licence_password,
-                license_secret_key: this.licence_secret_key,
+                licence_secret_key: this.licence_secret_key,
                 request: "update_content",
                 id_content: id_content,
                 name: name,
