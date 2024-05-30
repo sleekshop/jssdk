@@ -1,5 +1,5 @@
 import ErrorObject from "../helpers/errorObject";
-import {AxiosInstance} from "axios";
+import {XiorInstance} from "xior";
 import Sleekshop from "../index";
 
 export default class Aggregation {
@@ -7,7 +7,7 @@ export default class Aggregation {
     protected licence_username: string;
     protected licence_password: string;
     protected default_language: string;
-    protected instance: AxiosInstance;
+    protected instance: XiorInstance;
 
     constructor(parentObj: Sleekshop) {
         this.licence_username = parentObj.licence_username;

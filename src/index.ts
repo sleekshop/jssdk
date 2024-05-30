@@ -1,4 +1,4 @@
-import axios, {AxiosInstance} from "axios";
+import axios, {XiorInstance} from "xior";
 import Aggregation from "./routes/aggregation";
 import Applications from "./routes/applications";
 import Cart from "./routes/cart";
@@ -22,7 +22,7 @@ import Webhooks from "./routes/webhooks";
 
 export default class Sleekshop {
 
-    instance: AxiosInstance;
+    instance: XiorInstance;
 
     constructor(
         public endpoint: string,

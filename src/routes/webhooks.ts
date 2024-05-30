@@ -1,5 +1,5 @@
 import ErrorObject from "../helpers/errorObject";
-import {AxiosInstance} from "axios";
+import {XiorInstance} from "xior";
 import Sleekshop from "../index";
 
 export default class Webhooks {
@@ -8,7 +8,7 @@ export default class Webhooks {
     protected licence_password: string;
     protected licence_secret_key: string;
     protected default_language: string;
-    protected instance: AxiosInstance;
+    protected instance: XiorInstance;
 
     constructor(parentObj: Sleekshop) {
         this.licence_username = parentObj.licence_username;

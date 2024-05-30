@@ -5634,6 +5634,11 @@ tiny-glob@^0.2.8:
     globalyzer "0.1.0"
     globrex "^0.1.2"
 
+tiny-lru@^11.2.5:
+  version "11.2.6"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-11.2.6.tgz#86a4fd0ad615eac1639adf92010e8b944e209fdb"
+  integrity sha512-0PU3c9PjMnltZaFo2sGYv/nnJsMjG0Cxx8X6FXHPPGjFyoo1SJDxvUXW1207rdiSxYizf31roo+GrkIByQeZoA==
+
 tmpl@1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.5.tgz#8683e0b902bb9c20c4f726e3c0b69f36518c07cc"
@@ -5650,6 +5655,11 @@ to-regex-range@^5.0.1:
   integrity sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
   dependencies:
     is-number "^7.0.0"
+
+ts-deepmerge@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/ts-deepmerge/-/ts-deepmerge-7.0.0.tgz#ee824dc177d452603348c7e6f3b90223434a6b44"
+  integrity sha512-WZ/iAJrKDhdINv1WG6KZIGHrZDar6VfhftG1QJFpVbOYZMYJLJOvZOo1amictRXVdBXZIgBHKswMTXzElngprA==
 
 ts-jest@^29.1.0:
   version "29.1.2"
@@ -5912,6 +5922,14 @@ write-file-atomic@^4.0.2:
   dependencies:
     imurmurhash "^0.1.4"
     signal-exit "^3.0.7"
+
+xior@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/xior/-/xior-0.5.1.tgz#9e5d04a7d9a28cc5db19fd1cd22759eabe402fde"
+  integrity sha512-ZMpGGPUAPsV5wPgIX+51POqDYPITA5wjrF+/FBDFQxasZYlObBWubusnTzuJBD9cdEF9Fl0x+r1/Ap8uVjaVnw==
+  dependencies:
+    tiny-lru "^11.2.5"
+    ts-deepmerge "^7.0.0"
 
 y18n@^5.0.5:
   version "5.0.8"
