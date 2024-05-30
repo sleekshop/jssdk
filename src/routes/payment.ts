@@ -25,11 +25,12 @@ export default class Payment {
     public async getPaymentMethods(): Promise<object> {
 
         try {
-            let getPaymentMethods = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_payment_methods",
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_payment_methods");
+
+            let getPaymentMethods = await this.instance.post('', formData);
             return getPaymentMethods.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -51,13 +52,14 @@ export default class Payment {
     ): Promise<object> {
 
         try {
-            let doPayment = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "do_payment",
-                id_order: id_order,
-                args: args,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "do_payment");
+            formData.append('id_order', id_order.toString());
+            formData.append('args', JSON.stringify(args));
+
+            let doPayment = await this.instance.post('', formData);
             return doPayment.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -79,13 +81,14 @@ export default class Payment {
     ): Promise<object> {
 
         try {
-            let addDeliveryCosts = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "add_delivery_costs",
-                session: session,
-                delivery_costs: delivery_costs,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "add_delivery_costs");
+            formData.append('session', session);
+            formData.append('delivery_costs', JSON.stringify(delivery_costs));
+
+            let addDeliveryCosts = await this.instance.post('', formData);
             return addDeliveryCosts.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

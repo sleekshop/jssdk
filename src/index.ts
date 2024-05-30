@@ -39,9 +39,6 @@ export default class Sleekshop {
         this.instance = axios.create({
             baseURL: this.endpoint,
             timeout: 60000,
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
         });
 
         this.aggregation = new Aggregation(this);

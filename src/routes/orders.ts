@@ -84,40 +84,41 @@ export default class Orders {
     ): Promise<object> {
 
         try {
-            let setOrderDetails = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "set_order_details",
-                session: session,
-                id_payment_method: id_payment_method,
-                id_delivery_method: id_delivery_method,
-                delivery_companyname: delivery_companyname,
-                delivery_department: delivery_department,
-                delivery_salutation: delivery_salutation,
-                delivery_firstname: delivery_firstname,
-                delivery_lastname: delivery_lastname,
-                delivery_street: delivery_street,
-                delivery_number: delivery_number,
-                delivery_zip: delivery_zip,
-                delivery_state: delivery_state,
-                delivery_city: delivery_city,
-                delivery_country: delivery_country,
-                invoice_companyname: invoice_companyname,
-                invoice_department: invoice_department,
-                invoice_salutation: invoice_salutation,
-                invoice_firstname: invoice_firstname,
-                invoice_lastname: invoice_lastname,
-                invoice_street: invoice_street,
-                invoice_number: invoice_number,
-                invoice_zip: invoice_zip,
-                invoice_state: invoice_state,
-                invoice_city: invoice_city,
-                invoice_country: invoice_country,
-                note: note,
-                email: email,
-                phone: phone,
-                attributes: attributes
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "set_order_details");
+            formData.append('session', session);
+            formData.append('id_payment_method', id_payment_method.toString());
+            formData.append('id_delivery_method', id_delivery_method.toString());
+            formData.append('delivery_companyname', delivery_companyname);
+            formData.append('delivery_department', delivery_department);
+            formData.append('delivery_salutation', delivery_salutation);
+            formData.append('delivery_firstname', delivery_firstname);
+            formData.append('delivery_lastname', delivery_lastname);
+            formData.append('delivery_street', delivery_street);
+            formData.append('delivery_number', delivery_number);
+            formData.append('delivery_zip', delivery_zip);
+            formData.append('delivery_state', delivery_state);
+            formData.append('delivery_city', delivery_city);
+            formData.append('delivery_country', delivery_country);
+            formData.append('invoice_companyname', invoice_companyname);
+            formData.append('invoice_department', invoice_department);
+            formData.append('invoice_salutation', invoice_salutation);
+            formData.append('invoice_firstname', invoice_firstname);
+            formData.append('invoice_lastname', invoice_lastname);
+            formData.append('invoice_street', invoice_street);
+            formData.append('invoice_number', invoice_number);
+            formData.append('invoice_zip', invoice_zip);
+            formData.append('invoice_state', invoice_state);
+            formData.append('invoice_city', invoice_city);
+            formData.append('invoice_country', invoice_country);
+            formData.append('note', note);
+            formData.append('email', email);
+            formData.append('phone', phone);
+            formData.append('attributes', JSON.stringify(attributes));
+
+            let setOrderDetails = await this.instance.post('', formData);
             return setOrderDetails.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -134,11 +135,12 @@ export default class Orders {
     public async getDeliveryCountries(): Promise<object> {
 
         try {
-            let getDeliveryCountries = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_delivery_countries",
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_delivery_countries");
+
+            let getDeliveryCountries = await this.instance.post('', formData);
             return getDeliveryCountries.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -220,43 +222,44 @@ export default class Orders {
     ): Promise<object> {
 
         try {
-            let updateOrderDetails = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "update_order_details",
-                id_order: id_order,
-                id_payment_method: id_payment_method,
-                id_delivery_method: id_delivery_method,
-                order_state: order_state,
-                order_payment_state: order_payment_state,
-                order_delivery_state: order_delivery_state,
-                delivery_companyname: delivery_companyname,
-                delivery_department: delivery_department,
-                delivery_salutation: delivery_salutation,
-                delivery_firstname: delivery_firstname,
-                delivery_lastname: delivery_lastname,
-                delivery_street: delivery_street,
-                delivery_number: delivery_number,
-                delivery_zip: delivery_zip,
-                delivery_state: delivery_state,
-                delivery_city: delivery_city,
-                delivery_country: delivery_country,
-                invoice_companyname: invoice_companyname,
-                invoice_department: invoice_department,
-                invoice_salutation: invoice_salutation,
-                invoice_firstname: invoice_firstname,
-                invoice_lastname: invoice_lastname,
-                invoice_street: invoice_street,
-                invoice_number: invoice_number,
-                invoice_zip: invoice_zip,
-                invoice_state: invoice_state,
-                invoice_city: invoice_city,
-                invoice_country: invoice_country,
-                note: note,
-                email: email,
-                phone: phone,
-                attributes: attributes
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "update_order_details");
+            formData.append('id_order', id_order.toString());
+            formData.append('id_payment_method', id_payment_method.toString());
+            formData.append('id_delivery_method', id_delivery_method.toString());
+            formData.append('order_state', order_state);
+            formData.append('order_payment_state', order_payment_state);
+            formData.append('order_delivery_state', order_delivery_state);
+            formData.append('delivery_companyname', delivery_companyname);
+            formData.append('delivery_department', delivery_department);
+            formData.append('delivery_salutation', delivery_salutation);
+            formData.append('delivery_firstname', delivery_firstname);
+            formData.append('delivery_lastname', delivery_lastname);
+            formData.append('delivery_street', delivery_street);
+            formData.append('delivery_number', delivery_number);
+            formData.append('delivery_zip', delivery_zip);
+            formData.append('delivery_state', delivery_state);
+            formData.append('delivery_city', delivery_city);
+            formData.append('delivery_country', delivery_country);
+            formData.append('invoice_companyname', invoice_companyname);
+            formData.append('invoice_department', invoice_department);
+            formData.append('invoice_salutation', invoice_salutation);
+            formData.append('invoice_firstname', invoice_firstname);
+            formData.append('invoice_lastname', invoice_lastname);
+            formData.append('invoice_street', invoice_street);
+            formData.append('invoice_number', invoice_number);
+            formData.append('invoice_zip', invoice_zip);
+            formData.append('invoice_state', invoice_state);
+            formData.append('invoice_city', invoice_city);
+            formData.append('invoice_country', invoice_country);
+            formData.append('note', note);
+            formData.append('email', email);
+            formData.append('phone', phone);
+            formData.append('attributes', JSON.stringify(attributes));
+
+            let updateOrderDetails = await this.instance.post('', formData);
             return updateOrderDetails.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -276,12 +279,13 @@ export default class Orders {
     ): Promise<object> {
 
         try {
-            let getOrderDetails = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_order_details",
-                session: session
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_order_details");
+            formData.append('session', session);
+
+            let getOrderDetails = await this.instance.post('', formData);
             return getOrderDetails.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -303,13 +307,14 @@ export default class Orders {
     ): Promise<object> {
 
         try {
-            let getOrderById = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_order_by_id",
-                id_order: id_order,
-                language: language
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_order_by_id");
+            formData.append('id_order', id_order.toString());
+            formData.append('language', language);
+
+            let getOrderById = await this.instance.post('', formData);
             return getOrderById.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -329,12 +334,13 @@ export default class Orders {
     ): Promise<object> {
 
         try {
-            let checkout = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "checkout",
-                session: session
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "checkout");
+            formData.append('session', session);
+
+            let checkout = await this.instance.post('', formData);
             return checkout.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -355,12 +361,13 @@ export default class Orders {
     ): Promise<object> {
 
         try {
-            let getInvoice = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_invoice",
-                id_order: id_order
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_invoice");
+            formData.append('id_order', id_order.toString());
+
+            let getInvoice = await this.instance.post('', formData);
             return getInvoice.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -382,13 +389,14 @@ export default class Orders {
     ): Promise<object> {
 
         try {
-            let getOrderConfirmation = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_order_confirmation",
-                id_order: id_order,
-                args: args
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_order_confirmation");
+            formData.append('id_order', id_order.toString());
+            formData.append('args', JSON.stringify(args));
+
+            let getOrderConfirmation = await this.instance.post('', formData);
             return getOrderConfirmation.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

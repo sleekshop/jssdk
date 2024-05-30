@@ -36,15 +36,16 @@ export default class ShopObjects {
     ): Promise<object> {
 
         try {
-            let getProductDetails = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_product_details",
-                id_product: id_product,
-                language: language,
-                country: country,
-                needed_attributes: needed_attributes,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_product_details");
+            formData.append('id_product', id_product.toString());
+            formData.append('language', language);
+            formData.append('country', country);
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
+
+            let getProductDetails = await this.instance.post('', formData);
             return getProductDetails.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -66,13 +67,14 @@ export default class ShopObjects {
     ): Promise<object> {
 
         try {
-            let getContentDetails = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_content_details",
-                id_content: id_content,
-                language: language,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_content_details");
+            formData.append('id_content', id_content.toString());
+            formData.append('language', language);
+
+            let getContentDetails = await this.instance.post('', formData);
             return getContentDetails.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -96,14 +98,15 @@ export default class ShopObjects {
     ): Promise<object> {
 
         try {
-            let seoGetProductDetails = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "seo_get_product_details",
-                permalink: permalink,
-                country: country,
-                needed_attributes: needed_attributes,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "seo_get_product_details");
+            formData.append('permalink', permalink);
+            formData.append('country', country);
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
+
+            let seoGetProductDetails = await this.instance.post('', formData);
             return seoGetProductDetails.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -123,12 +126,13 @@ export default class ShopObjects {
     ): Promise<object> {
 
         try {
-            let seoGetContentDetails = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "seo_get_content_details",
-                permalink: permalink,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "seo_get_content_details");
+            formData.append('permalink', permalink);
+
+            let seoGetContentDetails = await this.instance.post('', formData);
             return seoGetContentDetails.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -159,19 +163,20 @@ export default class ShopObjects {
     ): Promise<object> {
 
         try {
-            let createProduct = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "create_product",
-                class: class_,
-                name: name,
-                shop_active: shop_active,
-                attributes: attributes,
-                metadata: metadata,
-                seo: seo,
-                availability: availability,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "create_product");
+            formData.append('class', class_);
+            formData.append('name', name);
+            formData.append('shop_active', shop_active.toString());
+            formData.append('attributes', JSON.stringify(attributes));
+            formData.append('metadata', JSON.stringify(metadata));
+            formData.append('seo', JSON.stringify(seo));
+            formData.append('availability', JSON.stringify(availability));
+
+            let createProduct = await this.instance.post('', formData);
             return createProduct.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -202,19 +207,20 @@ export default class ShopObjects {
     ): Promise<object> {
 
         try {
-            let updateProduct = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "update_product",
-                id_product: id_product,
-                name: name,
-                shop_active: shop_active,
-                attributes: attributes,
-                metadata: metadata,
-                seo: seo,
-                availability: availability,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "update_product");
+            formData.append('id_product', id_product.toString());
+            formData.append('name', name);
+            formData.append('shop_active', shop_active.toString());
+            formData.append('attributes', JSON.stringify(attributes));
+            formData.append('metadata', JSON.stringify(metadata));
+            formData.append('seo', JSON.stringify(seo));
+            formData.append('availability', JSON.stringify(availability));
+
+            let updateProduct = await this.instance.post('', formData);
             return updateProduct.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -246,19 +252,20 @@ export default class ShopObjects {
     ): Promise<object> {
 
         try {
-            let createVariation = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "create_variation",
-                id_product: id_product,
-                name: name,
-                shop_active: shop_active,
-                attributes: attributes,
-                metadata: metadata,
-                seo: seo,
-                availability: availability,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "create_variation");
+            formData.append('id_product', id_product.toString());
+            formData.append('name', name);
+            formData.append('shop_active', shop_active.toString());
+            formData.append('attributes', JSON.stringify(attributes));
+            formData.append('metadata', JSON.stringify(metadata));
+            formData.append('seo', JSON.stringify(seo));
+            formData.append('availability', JSON.stringify(availability));
+
+            let createVariation = await this.instance.post('', formData);
             return createVariation.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -277,13 +284,14 @@ export default class ShopObjects {
     ): Promise<object> {
 
         try {
-            let deleteProduct = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "delete_product",
-                id_product: id_product,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', 'delete_product');
+            formData.append('id_product', id_product.toString());
+
+            let deleteProduct = await this.instance.post('', formData);
             return deleteProduct.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -310,17 +318,18 @@ export default class ShopObjects {
     ): Promise<object> {
 
         try {
-            let updateContent = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "update_content",
-                id_content: id_content,
-                name: name,
-                shop_active: shop_active,
-                attributes: attributes,
-                seo: seo,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "update_content");
+            formData.append('id_content', id_content.toString());
+            formData.append('name', name);
+            formData.append('shop_active', shop_active.toString());
+            formData.append('attributes', JSON.stringify(attributes));
+            formData.append('seo', JSON.stringify(seo));
+
+            let updateContent = await this.instance.post('', formData);
             return updateContent.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

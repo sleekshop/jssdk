@@ -4,10 +4,10 @@ describe("getNewSession", () => {
     it("should return new Session", async () => {
 
         const sleekshop = new Sleekshop(
-            "https://test.sleekshop.net/srv/service/",
-            "test_asd",
-            "asd",
-            "asd"
+            "https://hansabau.sleekshop.net/srv/service/", // Sleekshop API URL
+            "hansabau_giNsV8U6uvIRWsi6j0xr", // licence username
+            "vmPtmNP3SOXmncLp5JwM", // licence password
+            "z0zKxwyB0Kr8vBlQQ0Hd"
         );
 
 

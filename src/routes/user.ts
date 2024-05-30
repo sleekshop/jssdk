@@ -41,19 +41,20 @@ export default class User {
         if (passwd1 !== passwd2) return new ErrorObject().genericError({message: "Passwords do not match"});
 
         try {
-            let registerUser = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "register_user",
-                language: language,
-                args: {
-                    username: username,
-                    passwd1: passwd1,
-                    passwd2: passwd2,
-                    email: email,
-                    class: class_
-                }
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "register_user");
+            formData.append('language', language);
+            formData.append('args', JSON.stringify({
+                username: username,
+                passwd1: passwd1,
+                passwd2: passwd2,
+                email: email,
+                class: class_
+            }));
+
+            let registerUser = await this.instance.post('', formData);
             return registerUser.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -75,13 +76,14 @@ export default class User {
     ): Promise<object> {
 
         try {
-            let verifyUser = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "verify_user",
-                id_user: id_user,
-                session_id: session_id,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "verify_user");
+            formData.append('id_user', id_user.toString());
+            formData.append('session_id', session_id);
+
+            let verifyUser = await this.instance.post('', formData);
             return verifyUser.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -105,14 +107,15 @@ export default class User {
     ): Promise<object> {
 
         try {
-            let loginUser = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "login_user",
-                username: username,
-                password: password,
-                session: session,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "login_user");
+            formData.append('username', username);
+            formData.append('password', password);
+            formData.append('session', session);
+
+            let loginUser = await this.instance.post('', formData);
             return loginUser.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -132,12 +135,13 @@ export default class User {
     ): Promise<object> {
 
         try {
-            let logoutUser = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "logout_user",
-                session: session,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "logout_user");
+            formData.append('session', session);
+
+            let logoutUser = await this.instance.post('', formData);
             return logoutUser.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -165,15 +169,16 @@ export default class User {
         if (new_passwd1 !== new_passwd2) return new ErrorObject().genericError({message: "Passwords do not match"});
 
         try {
-            let setUserPassword = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "set_user_password",
-                session: session,
-                old_passwd: old_passwd,
-                new_passwd1: new_passwd1,
-                new_passwd2: new_passwd2,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "set_user_password");
+            formData.append('session', session);
+            formData.append('old_passwd', old_passwd);
+            formData.append('new_passwd1', new_passwd1);
+            formData.append('new_passwd2', new_passwd2);
+
+            let setUserPassword = await this.instance.post('', formData);
             return setUserPassword.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -193,14 +198,15 @@ export default class User {
     ): Promise<object> {
 
         try {
-            let resetUserPassword = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "reset_user_password",
-                args: {
-                    email: email
-                }
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "reset_user_password");
+            formData.append('args', JSON.stringify({
+                email: email
+            }));
+
+            let resetUserPassword = await this.instance.post('', formData);
             return resetUserPassword.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -228,17 +234,17 @@ export default class User {
         if (new_passwd1 !== new_passwd2) return new ErrorObject().genericError({message: "Passwords do not match"});
 
         try {
-            let resetUserPassword = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "reset_user_password",
-                args: {
-                    session_id: session_id,
-                    id_user: id_user,
-                    new_passwd1: new_passwd1,
-                    new_passwd2: new_passwd2
-                }
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "reset_user_password");
+            formData.append('args', JSON.stringify({
+                session_id: session_id,
+                id_user: id_user,
+                new_passwd1: new_passwd1,
+                new_passwd2: new_passwd2
+            }));
+            let resetUserPassword = await this.instance.post('', formData);
             return resetUserPassword.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -258,12 +264,13 @@ export default class User {
     ): Promise<object> {
 
         try {
-            let getUserOrders = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_user_orders",
-                session: session,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_user_orders");
+            formData.append('session', session);
+
+            let getUserOrders = await this.instance.post('', formData);
             return getUserOrders.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -283,12 +290,13 @@ export default class User {
     ): Promise<object> {
 
         try {
-            let getUserData = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_user_data",
-                session: session,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_user_data");
+            formData.append('session', session);
+
+            let getUserData = await this.instance.post('', formData);
             return getUserData.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -308,12 +316,13 @@ export default class User {
     ): Promise<object> {
 
         try {
-            let getUserById = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_user_by_id",
-                id_user: id_user,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_user_by_id");
+            formData.append('id_user', id_user.toString());
+
+            let getUserById = await this.instance.post('', formData);
             return getUserById.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -335,13 +344,14 @@ export default class User {
     ): Promise<object> {
 
         try {
-            let setUserData = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "set_user_data",
-                session: session,
-                attributes: attributes
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "set_user_data");
+            formData.append('session', session);
+            formData.append('attributes', JSON.stringify(attributes));
+
+            let setUserData = await this.instance.post('', formData);
             return setUserData.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -363,13 +373,14 @@ export default class User {
     ): Promise<object> {
 
         try {
-            let updateUserData = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "update_user_data",
-                id_user: id_user,
-                attributes: attributes
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "update_user_data");
+            formData.append('id_user', id_user.toString());
+            formData.append('attributes', JSON.stringify(attributes));
+
+            let updateUserData = await this.instance.post('', formData);
             return updateUserData.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -390,13 +401,14 @@ export default class User {
     ): Promise<object> {
 
         try {
-            let instantLogin = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "instant_login",
-                token: token,
-                application_token: application_token
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "instant_login");
+            formData.append('token', token);
+            formData.append('application_token', application_token);
+
+            let instantLogin = await this.instance.post('', formData);
             return instantLogin.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

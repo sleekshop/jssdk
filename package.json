@@ -41,6 +41,7 @@
   "dependencies": {
     "form-data": "^4.0.0",
     "isomorphic-unfetch": "^4.0.2",
+    "querystring": "^0.2.1",
     "xior": "^0.5.1"
   },
   "exports": {

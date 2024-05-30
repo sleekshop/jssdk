@@ -46,21 +46,22 @@ export default class Cart {
     ): Promise<object> {
 
         try {
-            let addToCart = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "add_to_cart",
-                session: session,
-                id_shopobject: id_shopobject,
-                element_type: element_type,
-                id_parent_element: id_parent_element,
-                quantity: quantity,
-                price_field: price_field,
-                name_field: name_field,
-                description_field: description_field,
-                language: language,
-                country: country,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "add_to_cart");
+            formData.append('session', session);
+            formData.append('id_shopobject', id_shopobject.toString());
+            formData.append('element_type', element_type);
+            formData.append('id_parent_element', id_parent_element.toString());
+            formData.append('quantity', quantity.toString());
+            formData.append('price_field', price_field);
+            formData.append('name_field', name_field);
+            formData.append('description_field', description_field);
+            formData.append('language', language);
+            formData.append('country', country);
+
+            let addToCart = await this.instance.post('', formData);
             return addToCart.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -83,13 +84,14 @@ export default class Cart {
     ): Promise<object> {
 
         try {
-            let subFromCart = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "sub_from_cart",
-                session: session,
-                id_element: id_element,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "sub_from_cart");
+            formData.append('session', session);
+            formData.append('id_element', id_element.toString());
+
+            let subFromCart = await this.instance.post('', formData);
             return subFromCart.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -111,13 +113,14 @@ export default class Cart {
     ): Promise<object> {
 
         try {
-            let delFromCart = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "del_from_cart",
-                session: session,
-                id_element: id_element,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "del_from_cart");
+            formData.append('session', session);
+            formData.append('id_element', id_element.toString());
+
+            let delFromCart = await this.instance.post('', formData);
             return delFromCart.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -137,12 +140,13 @@ export default class Cart {
     ): Promise<object> {
 
         try {
-            let clearCart = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "clear_cart",
-                session: session,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "clear_cart");
+            formData.append('session', session);
+
+            let clearCart = await this.instance.post('', formData);
             return clearCart.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -162,12 +166,13 @@ export default class Cart {
     ): Promise<object> {
 
         try {
-            let getCart = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_cart",
-                session: session,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_cart");
+            formData.append('session', session);
+
+            let getCart = await this.instance.post('', formData);
             return getCart.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

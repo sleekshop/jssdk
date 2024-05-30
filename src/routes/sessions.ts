@@ -25,11 +25,12 @@ export default class Sessions {
     public async getNewSession(): Promise<ISession | object> {
 
         try {
-            let sessionResponse = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_new_session",
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_new_session");
+
+            let sessionResponse = await this.instance.post('', formData);
             return sessionResponse.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

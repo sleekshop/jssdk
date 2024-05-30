@@ -53,15 +53,16 @@ export default class Server {
     ): Promise<object> {
 
         try {
-            let createChannel = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "create_channel",
-                name: name,
-                description: description,
-                shop_active: shop_active,
-                server_output: server_output,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "create_channel");
+            formData.append('name', name);
+            formData.append('description', description);
+            formData.append('shop_active', shop_active.toString());
+            formData.append('server_output', server_output);
+
+            let createChannel = await this.instance.post('', formData);
             return createChannel.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

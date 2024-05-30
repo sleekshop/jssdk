@@ -29,13 +29,14 @@ export default class Coupons {
     ): Promise<object> {
 
         try {
-            let addCoupons = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "add_coupons",
-                session: session,
-                coupons: coupons,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "add_coupons");
+            formData.append('session', session);
+            formData.append('coupons', JSON.stringify(coupons));
+
+            let addCoupons = await this.instance.post('', formData);
             return addCoupons.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -58,14 +59,15 @@ export default class Coupons {
     ): Promise<object> {
 
         try {
-            let createCoupons = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "create_coupons",
-                count: count,
-                name: name,
-                amount: amount,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "create_coupons");
+            formData.append('count', count.toString());
+            formData.append('name', name);
+            formData.append('amount', amount.toString());
+
+            let createCoupons = await this.instance.post('', formData);
             return createCoupons.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

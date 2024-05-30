@@ -31,14 +31,15 @@ export default class Applications {
     ): Promise<object> {
 
         try {
-            let applicationApiCall = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "application_api_call",
-                application: application,
-                app_request: app_request,
-                args: args,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "application_api_call");
+            formData.append('application', application);
+            formData.append('app_request', app_request);
+            formData.append('args', JSON.stringify(args));
+
+            let applicationApiCall = await this.instance.post('', formData);
             return applicationApiCall.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

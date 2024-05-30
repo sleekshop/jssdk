@@ -44,19 +44,20 @@ export default class Search {
     ): Promise<object> {
 
         try {
-            let searchProducts = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "search_products",
-                constraint: constraint,
-                language: language,
-                country: country,
-                order_columns: order_columns,
-                order_type: order_type,
-                left_limit: left_limit,
-                right_limit: right_limit,
-                needed_attributes: needed_attributes,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "search_products");
+            formData.append('constraint', JSON.stringify(constraint));
+            formData.append('language', language);
+            formData.append('country', country);
+            formData.append('order_columns', JSON.stringify(order_columns));
+            formData.append('order_type', order_type);
+            formData.append('left_limit', left_limit.toString());
+            formData.append('right_limit', right_limit.toString());
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
+
+            let searchProducts = await this.instance.post('', formData);
             return searchProducts.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -88,18 +89,19 @@ export default class Search {
     ): Promise<object> {
 
         try {
-            let searchContents = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "search_contents",
-                constraint: constraint,
-                language: language,
-                order_columns: order_columns,
-                order_type: order_type,
-                left_limit: left_limit,
-                right_limit: right_limit,
-                needed_attributes: needed_attributes,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "search_contents");
+            formData.append('constraint', JSON.stringify(constraint));
+            formData.append('language', language);
+            formData.append('order_columns', JSON.stringify(order_columns));
+            formData.append('order_type', order_type);
+            formData.append('left_limit', left_limit.toString());
+            formData.append('right_limit', right_limit.toString());
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
+
+            let searchContents = await this.instance.post('', formData);
             return searchContents.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -123,14 +125,15 @@ export default class Search {
     ): Promise<object> {
 
         try {
-            let searchDistinctProducts = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "search_distinct_products",
-                field: field,
-                constraint: constraint,
-                language: language,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "search_distinct_products");
+            formData.append('field', field);
+            formData.append('constraint', JSON.stringify(constraint));
+            formData.append('language', language);
+
+            let searchDistinctProducts = await this.instance.post('', formData);
             return searchDistinctProducts.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -156,15 +159,16 @@ export default class Search {
     ): Promise<object> {
 
         try {
-            let searchOrders = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "search_orders",
-                constraint: constraint,
-                language: language,
-                left_limit: left_limit,
-                right_limit: right_limit,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "search_orders");
+            formData.append('constraint', JSON.stringify(constraint));
+            formData.append('language', language);
+            formData.append('left_limit', left_limit.toString());
+            formData.append('right_limit', right_limit.toString());
+
+            let searchOrders = await this.instance.post('', formData);
             return searchOrders.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -194,18 +198,18 @@ export default class Search {
     ): Promise<object> {
 
         try {
-            let searchUsers = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "search_users",
-                constraint: constraint,
-                order_columns: order_columns,
-                order: order,
-                left_limit: left_limit,
-                right_limit: right_limit,
-                needed_attributes: needed_attributes,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "search_users");
+            formData.append('constraint', JSON.stringify(constraint));
+            formData.append('order_columns', JSON.stringify(order_columns));
+            formData.append('order', order);
+            formData.append('left_limit', left_limit.toString());
+            formData.append('right_limit', right_limit.toString());
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
+
+            let searchUsers = await this.instance.post('', formData);
             return searchUsers.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -235,19 +239,20 @@ export default class Search {
     ): Promise<object> {
 
         try {
-            let searchWarehouseEntities = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "search_warehouse_entities",
-                constraint: constraint,
-                language: language,
-                order_columns: order_columns,
-                order_type: order_type,
-                left_limit: left_limit,
-                right_limit: right_limit,
-                needed_attributes: needed_attributes,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "search_warehouse_entities");
+            formData.append('constraint', JSON.stringify(constraint));
+            formData.append('language', language);
+            formData.append('order_columns', JSON.stringify(order_columns));
+            formData.append('order_type', order_type);
+            formData.append('left_limit', left_limit.toString());
+            formData.append('right_limit', right_limit.toString());
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
+
+            let searchWarehouseEntities = await this.instance.post('', formData);
             return searchWarehouseEntities.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

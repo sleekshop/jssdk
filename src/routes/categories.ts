@@ -39,13 +39,14 @@ export default class Categories {
     ): Promise<ICategories | object> {
 
         try {
-            let getCategoriesResponse = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "get_categories",
-                id_parent: id_parent,
-                language: language,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "get_categories");
+            formData.append('id_parent', id_parent.toString());
+            formData.append('language', language);
+
+            let getCategoriesResponse = await this.instance.post('', formData);
             return getCategoriesResponse.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -80,19 +81,20 @@ export default class Categories {
 
         try {
 
-            let getProductsInCategory = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: 'get_products_in_category',
-                language: language,
-                id_category: id_category,
-                country: country,
-                order_columns: order_columns,
-                order: order,
-                left_limit: left_limit,
-                right_limit: right_limit,
-                needed_attributes: needed_attributes,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', 'get_products_in_category');
+            formData.append('language', language);
+            formData.append('id_category', id_category.toString());
+            formData.append('country', country);
+            formData.append('order_columns', JSON.stringify(order_columns));
+            formData.append('order', order);
+            formData.append('left_limit', left_limit.toString());
+            formData.append('right_limit', right_limit.toString());
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
+
+            let getProductsInCategory = await this.instance.post('', formData);
 
             return getProductsInCategory.data;
 
@@ -126,19 +128,19 @@ export default class Categories {
     ): Promise<IContentsInCategory | object> {
 
         try {
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', 'get_contents_in_category');
+            formData.append('language', language);
+            formData.append('id_category', id_category.toString());
+            formData.append('order_columns', JSON.stringify(order_columns));
+            formData.append('order', order);
+            formData.append('left_limit', left_limit.toString());
+            formData.append('right_limit', right_limit.toString());
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
 
-            let getContentsInCategory = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: 'get_contents_in_category',
-                language: language,
-                id_category: id_category,
-                order_columns: order_columns,
-                order: order,
-                left_limit: left_limit,
-                right_limit: right_limit,
-                needed_attributes: needed_attributes,
-            });
+            let getContentsInCategory = await this.instance.post('', formData);
             return getContentsInCategory.data;
 
         } catch (error) {
@@ -173,19 +175,20 @@ export default class Categories {
     ): Promise<IShopobjectsInCategory | object> {
 
         try {
-            let getShopobjectsInCategory = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: 'get_shopobjects_in_category',
-                language: language,
-                id_category: id_category,
-                country: country,
-                order_columns: order_columns,
-                order: order,
-                left_limit: left_limit,
-                right_limit: right_limit,
-                needed_attributes: needed_attributes,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', 'get_shopobjects_in_category');
+            formData.append('language', language);
+            formData.append('id_category', id_category.toString());
+            formData.append('country', country);
+            formData.append('order_columns', JSON.stringify(order_columns));
+            formData.append('order', order);
+            formData.append('left_limit', left_limit.toString());
+            formData.append('right_limit', right_limit.toString());
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
+
+            let getShopobjectsInCategory = await this.instance.post('', formData);
             return getShopobjectsInCategory.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -219,19 +222,20 @@ export default class Categories {
     ): Promise<IDumpCategory | object> {
 
         try {
-            let dumpCategory = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: 'dump_category',
-                language: language,
-                id_category: id_category,
-                country: country,
-                order_columns: order_columns,
-                order: order,
-                left_limit: left_limit,
-                right_limit: right_limit,
-                needed_attributes: needed_attributes,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', 'dump_category');
+            formData.append('language', language);
+            formData.append('id_category', id_category.toString());
+            formData.append('country', country);
+            formData.append('order_columns', JSON.stringify(order_columns));
+            formData.append('order', order);
+            formData.append('left_limit', left_limit.toString());
+            formData.append('right_limit', right_limit.toString());
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
+
+            let dumpCategory = await this.instance.post('', formData);
             return dumpCategory.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -266,19 +270,20 @@ export default class Categories {
     ): Promise<object> {
 
         try {
-            let seoGetProductsInCategory = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: 'seo_get_products_in_category',
-                language: language,
-                permalink: permalink,
-                country: country,
-                order_columns: order_columns,
-                order: order,
-                left_limit: left_limit,
-                right_limit: right_limit,
-                needed_attributes: needed_attributes,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', 'seo_get_products_in_category');
+            formData.append('language', language);
+            formData.append('permalink', permalink);
+            formData.append('country', country);
+            formData.append('order_columns', JSON.stringify(order_columns));
+            formData.append('order', order);
+            formData.append('left_limit', left_limit.toString());
+            formData.append('right_limit', right_limit.toString());
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
+
+            let seoGetProductsInCategory = await this.instance.post('', formData);
             return seoGetProductsInCategory.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -309,17 +314,18 @@ export default class Categories {
     ): Promise<object> {
 
         try {
-            let seoGetContentsInCategory = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: 'seo_get_contents_in_category',
-                permalink: permalink,
-                order_columns: order_columns,
-                order: order,
-                left_limit: left_limit,
-                right_limit: right_limit,
-                needed_attributes: needed_attributes,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', 'seo_get_contents_in_category');
+            formData.append('permalink', permalink);
+            formData.append('order_columns', JSON.stringify(order_columns));
+            formData.append('order', order);
+            formData.append('left_limit', left_limit.toString());
+            formData.append('right_limit', right_limit.toString());
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
+
+            let seoGetContentsInCategory = await this.instance.post('', formData);
             return seoGetContentsInCategory.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -350,17 +356,18 @@ export default class Categories {
     ): Promise<object> {
 
         try {
-            let seoGetShopobjectsInCategory = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: 'seo_get_shopobjects_in_category',
-                permalink: permalink,
-                order_columns: order_columns,
-                order: order,
-                left_limit: left_limit,
-                right_limit: right_limit,
-                needed_attributes: needed_attributes,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', 'seo_get_shopobjects_in_category');
+            formData.append('permalink', permalink);
+            formData.append('order_columns', JSON.stringify(order_columns));
+            formData.append('order', order);
+            formData.append('left_limit', left_limit.toString());
+            formData.append('right_limit', right_limit.toString());
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
+
+            let seoGetShopobjectsInCategory = await this.instance.post('', formData);
             return seoGetShopobjectsInCategory.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -387,16 +394,17 @@ export default class Categories {
     ): Promise<object> {
 
         try {
-            let createCategory = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: 'create_category',
-                id_parent: id_parent,
-                name: name,
-                labels: labels,
-                seo: seo,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', 'create_category');
+            formData.append('id_parent', id_parent.toString());
+            formData.append('name', name);
+            formData.append('labels', JSON.stringify(labels));
+            formData.append('seo', JSON.stringify(seo));
+
+            let createCategory = await this.instance.post('', formData);
             return createCategory.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -425,17 +433,18 @@ export default class Categories {
     ): Promise<object> {
 
         try {
-            let updateCategory = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: 'update_category',
-                id_parent: id_parent,
-                name: name,
-                labels: labels,
-                attributes: attributes,
-                seo: seo,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', 'update_category');
+            formData.append('id_parent', id_parent.toString());
+            formData.append('name', name);
+            formData.append('labels', JSON.stringify(labels));
+            formData.append('attributes', JSON.stringify(attributes));
+            formData.append('seo', JSON.stringify(seo));
+
+            let updateCategory = await this.instance.post('', formData);
             return updateCategory.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -456,13 +465,14 @@ export default class Categories {
     ): Promise<object> {
 
         try {
-            let deleteCategory = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: 'delete_category',
-                id_category: id_category,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', 'delete_category');
+            formData.append('id_category', id_category.toString());
+
+            let deleteCategory = await this.instance.post('', formData);
             return deleteCategory.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

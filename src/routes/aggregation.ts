@@ -28,12 +28,13 @@ export default class Aggregation {
     ): Promise<object> {
 
         try {
-            let aggregate = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                request: "aggregate",
-                pipe: pipe,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('request', "aggregate");
+            formData.append('pipe', JSON.stringify(pipe));
+
+            let aggregate = await this.instance.post('', formData);
             return aggregate.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

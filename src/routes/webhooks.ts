@@ -31,14 +31,15 @@ export default class Webhooks {
     ): Promise<object> {
 
         try {
-            let createWebhook = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "create_webhook",
-                name: name,
-                event: event,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "create_webhook");
+            formData.append('name', name);
+            formData.append('event', event);
+
+            let createWebhook = await this.instance.post('', formData);
             return createWebhook.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -61,15 +62,16 @@ export default class Webhooks {
     ): Promise<object> {
 
         try {
-            let updateWebhook = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "update_webhook",
-                name: name,
-                url: url,
-                parameter: parameter,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "update_webhook");
+            formData.append('name', name);
+            formData.append('url', url);
+            formData.append('parameter', parameter);
+
+            let updateWebhook = await this.instance.post('', formData);
             return updateWebhook.data;
         } catch (error) {
             return new ErrorObject().genericError(error);

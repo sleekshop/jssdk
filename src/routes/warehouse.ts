@@ -37,17 +37,18 @@ export default class Warehouse {
     ): Promise<object> {
 
         try {
-            let createWarehouseEntity = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "create_warehouse_entity",
-                class: class_,
-                name: name,
-                id_manufacturer: id_manufacturer,
-                attributes: attributes,
-                metadata: metadata,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "create_warehouse_entity");
+            formData.append('class', class_);
+            formData.append('name', name);
+            formData.append('id_manufacturer', id_manufacturer.toString());
+            formData.append('attributes', JSON.stringify(attributes));
+            formData.append('metadata', JSON.stringify(metadata));
+
+            let createWarehouseEntity = await this.instance.post('', formData);
             return createWarehouseEntity.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -74,17 +75,18 @@ export default class Warehouse {
     ): Promise<object> {
 
         try {
-            let updateWarehouseEntity = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "update_warehouse_entity",
-                id_warehouse_entity: id_warehouse_entity,
-                name: name,
-                id_manufacturer: id_manufacturer,
-                attributes: attributes,
-                metadata: metadata,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "update_warehouse_entity");
+            formData.append('id_warehouse_entity', id_warehouse_entity.toString());
+            formData.append('name', name);
+            formData.append('id_manufacturer', id_manufacturer.toString());
+            formData.append('attributes', JSON.stringify(attributes));
+            formData.append('metadata', JSON.stringify(metadata));
+
+            let updateWarehouseEntity = await this.instance.post('', formData);
             return updateWarehouseEntity.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -103,13 +105,14 @@ export default class Warehouse {
     ): Promise<object> {
 
         try {
-            let deleteWarehouseEntity = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "delete_warehouse_entity",
-                id_warehouse_entity: id_warehouse_entity,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "delete_warehouse_entity");
+            formData.append('id_warehouse_entity', id_warehouse_entity.toString());
+
+            let deleteWarehouseEntity = await this.instance.post('', formData);
             return deleteWarehouseEntity.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -134,16 +137,17 @@ export default class Warehouse {
     ): Promise<object> {
 
         try {
-            let inventoryPlace = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "inventory_place",
-                storage: storage,
-                element_number: element_number,
-                quantity: quantity,
-                note: note,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "inventory_place");
+            formData.append('storage', storage);
+            formData.append('element_number', element_number);
+            formData.append('quantity', quantity.toString());
+            formData.append('note', note);
+
+            let inventoryPlace = await this.instance.post('', formData);
             return inventoryPlace.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -168,16 +172,17 @@ export default class Warehouse {
     ): Promise<object> {
 
         try {
-            let inventoryTake = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "inventory_take",
-                storage: storage,
-                element_number: element_number,
-                quantity: quantity,
-                note: note,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "inventory_take");
+            formData.append('storage', storage);
+            formData.append('element_number', element_number);
+            formData.append('quantity', quantity.toString());
+            formData.append('note', note);
+
+            let inventoryTake = await this.instance.post('', formData);
             return inventoryTake.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -200,15 +205,16 @@ export default class Warehouse {
     ): Promise<object> {
 
         try {
-            let addBinding = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "add_binding",
-                id_product: id_product,
-                element_number: element_number,
-                quantity: quantity,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "add_binding");
+            formData.append('id_product', id_product.toString());
+            formData.append('element_number', element_number);
+            formData.append('quantity', quantity.toString());
+
+            let addBinding = await this.instance.post('', formData);
             return addBinding.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
@@ -229,14 +235,15 @@ export default class Warehouse {
     ): Promise<object> {
 
         try {
-            let deleteBinding = await this.instance.post('', {
-                licence_username: this.licence_username,
-                licence_password: this.licence_password,
-                licence_secret_key: this.licence_secret_key,
-                request: "delete_binding",
-                id_product: id_product,
-                element_number: element_number,
-            });
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', "delete_binding");
+            formData.append('id_product', id_product.toString());
+            formData.append('element_number', element_number);
+
+            let deleteBinding = await this.instance.post('', formData);
             return deleteBinding.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
