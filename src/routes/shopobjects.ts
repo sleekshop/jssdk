@@ -299,6 +299,32 @@ export default class ShopObjects {
     }
 
     /**
+     * delete_content
+     * @method deleteContent
+     * @param {Number} id_content
+     * @return {Object} Object of product details.
+     * @public
+     */
+    public async deleteContent(
+        id_content: number
+    ): Promise<object> {
+
+        try {
+            const formData = new FormData();
+            formData.append('licence_username', this.licence_username);
+            formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
+            formData.append('request', 'delete_content');
+            formData.append('id_content', id_content.toString());
+
+            let deleteContent = await this.instance.post('', formData);
+            return deleteContent.data;
+        } catch (error) {
+            return new ErrorObject().genericError(error);
+        }
+    }
+
+    /**
      * update_content
      * @method updateContent
      * @param {Number} id_content
