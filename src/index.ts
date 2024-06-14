@@ -13,6 +13,7 @@ import ShopObjects from "./routes/shopobjects";
 import User from "./routes/user";
 import Warehouse from "./routes/warehouse";
 import Webhooks from "./routes/webhooks";
+import Classes from "./routes/classes";
 
 /*
  * ----------------------------------------------------------------
@@ -45,6 +46,7 @@ export default class Sleekshop {
         this.applications = new Applications(this);
         this.cart = new Cart(this);
         this.categories = new Categories(this);
+        this.classes = new Classes(this);
         this.coupons = new Coupons(this);
         this.orders = new Orders(this);
         this.payment = new Payment(this);
@@ -61,6 +63,7 @@ export default class Sleekshop {
     public applications: Applications;
     public cart: Cart;
     public categories: Categories;
+    public classes: Classes;
     public coupons: Coupons;
     public orders: Orders;
     public payment: Payment;
