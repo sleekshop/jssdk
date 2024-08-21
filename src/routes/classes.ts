@@ -23,7 +23,7 @@ export default class Classes {
      * @method getClassDetails
      * @param {Number} id_class
      * @param {String} language
-     * @return {object} Object of session with either an existing or new session.
+     * @return {object} Object of class details.
      * @public
      */
     public async getClassDetails(

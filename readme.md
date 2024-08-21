@@ -32,14 +32,14 @@ bun add sleekshop-js-sdk
 
 First you need to initialize the sdk:
 ```javascript
-import { Sleekshop } from 'sleekshop-js-sdk';
+import Sleekshop from 'sleekshop-js-sdk';
 
-const sleekshop = new Sleekshop({
+const sleekshop = new Sleekshop(
     "https://yourinstance.sleekshop.net/srv/service/", // Sleekshop API URL
     "yourinstance_jYkL7fPmQw2eVtNgHs3S", // licence username
     "jYkL7fPmQw2eVtNgHs3S", // licence password
     "jYkL7fPmQw2eVtNgHs3S" // optional licence secret key - required for some API calls
-});
+);
 ```
 
 ### 2. Interact with the API
