@@ -206,6 +206,7 @@ export default class Categories {
      * @param {String} order
      * @param {Number} left_limit
      * @param {Number} right_limit
+     * @param {Number} depth
      * @param {Array} needed_attributes
      * @return {IDumpCategory} Object of products in category.
      * @public
@@ -218,6 +219,7 @@ export default class Categories {
         order: string = 'ASC',
         left_limit: number = 0,
         right_limit: number = 0,
+        depth: number = 0,
         needed_attributes: Array<string> = [],
     ): Promise<IDumpCategory | object> {
 
@@ -233,6 +235,7 @@ export default class Categories {
             formData.append('order', order);
             formData.append('left_limit', left_limit.toString());
             formData.append('right_limit', right_limit.toString());
+            formData.append('depth', depth.toString());
             formData.append('needed_attributes', JSON.stringify(needed_attributes));
 
             let dumpCategory = await this.instance.post('', formData);
