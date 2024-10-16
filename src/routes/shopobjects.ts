@@ -1,6 +1,7 @@
 import ErrorObject from "../helpers/errorObject";
 import {XiorInstance} from "xior";
 import Sleekshop from "../index";
+import checkSecretKey from "../helpers/secretKey";
 
 export default class ShopObjects {
 
@@ -162,6 +163,8 @@ export default class ShopObjects {
         availability: object = {}
     ): Promise<object> {
 
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
@@ -205,6 +208,8 @@ export default class ShopObjects {
         seo: object = {},
         availability: object = {}
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
 
         try {
             const formData = new FormData();
@@ -251,6 +256,8 @@ export default class ShopObjects {
         availability: object = {}
     ): Promise<object> {
 
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
@@ -283,6 +290,8 @@ export default class ShopObjects {
         id_product: number
     ): Promise<object> {
 
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
@@ -308,6 +317,8 @@ export default class ShopObjects {
     public async deleteContent(
         id_content: number
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
 
         try {
             const formData = new FormData();
@@ -342,6 +353,8 @@ export default class ShopObjects {
         attributes: object = {},
         seo: object = {}
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
 
         try {
             const formData = new FormData();

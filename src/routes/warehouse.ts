@@ -1,6 +1,7 @@
 import ErrorObject from "../helpers/errorObject";
 import {XiorInstance} from "xior";
 import Sleekshop from "../index";
+import checkSecretKey from "../helpers/secretKey";
 
 export default class Warehouse {
 
@@ -35,6 +36,8 @@ export default class Warehouse {
         attributes: object,
         metadata: object
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
 
         try {
             const formData = new FormData();
@@ -74,6 +77,8 @@ export default class Warehouse {
         metadata: object
     ): Promise<object> {
 
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
@@ -103,6 +108,8 @@ export default class Warehouse {
     public async deleteWarehouseEntity(
         id_warehouse_entity: number
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
 
         try {
             const formData = new FormData();
@@ -135,6 +142,8 @@ export default class Warehouse {
         quantity: number,
         note: string
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
 
         try {
             const formData = new FormData();
@@ -171,6 +180,8 @@ export default class Warehouse {
         note: string
     ): Promise<object> {
 
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
@@ -204,6 +215,8 @@ export default class Warehouse {
         quantity: number = 1
     ): Promise<object> {
 
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
@@ -233,6 +246,8 @@ export default class Warehouse {
         id_product: number,
         element_number: string
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
 
         try {
             const formData = new FormData();

@@ -1,6 +1,7 @@
 import ErrorObject from "../helpers/errorObject";
 import {XiorInstance} from "xior";
 import Sleekshop from "../index";
+import checkSecretKey from "../helpers/secretKey";
 
 export default class Classes {
 
@@ -31,6 +32,8 @@ export default class Classes {
         language: string = this.default_language,
     ): Promise<object> {
 
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
@@ -60,6 +63,9 @@ export default class Classes {
         name: string,
         type: string,
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
@@ -86,6 +92,9 @@ export default class Classes {
     public async deleteClass(
         id_class: number,
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
@@ -113,6 +122,9 @@ export default class Classes {
         id_class: number,
         attributes: Array<object>,
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
@@ -141,6 +153,9 @@ export default class Classes {
         id_class: number,
         attributes: Array<string>,
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);

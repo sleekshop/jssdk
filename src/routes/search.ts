@@ -1,6 +1,7 @@
 import ErrorObject from "../helpers/errorObject";
 import {XiorInstance} from "xior";
 import Sleekshop from "../index";
+import checkSecretKey from "../helpers/secretKey";
 
 export default class Search {
 
@@ -237,6 +238,8 @@ export default class Search {
         right_limit: number = 0,
         needed_attributes: Array<string> = []
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
 
         try {
             const formData = new FormData();

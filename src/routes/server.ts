@@ -1,17 +1,20 @@
 import ErrorObject from "../helpers/errorObject";
 import {XiorInstance} from "xior";
 import Sleekshop from "../index";
+import checkSecretKey from "../helpers/secretKey";
 
 export default class Server {
 
     protected licence_username: string;
     protected licence_password: string;
+    protected licence_secret_key: string;
     protected default_language: string;
     protected instance: XiorInstance;
 
     constructor(parentObj: Sleekshop) {
         this.licence_username = parentObj.licence_username;
         this.licence_password = parentObj.licence_password;
+        this.licence_secret_key = parentObj.licence_secret_key;
         this.instance = parentObj.instance;
         this.default_language = parentObj.default_language;
     }
@@ -52,10 +55,13 @@ export default class Server {
         server_output: string = 'json'
     ): Promise<object> {
 
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
             formData.append('request', "create_channel");
             formData.append('name', name);
             formData.append('description', description);

@@ -1,6 +1,7 @@
 import ErrorObject from "../helpers/errorObject";
 import {XiorInstance} from "xior";
 import Sleekshop from "../index";
+import checkSecretKey from "../helpers/secretKey";
 
 export default class Webhooks {
 
@@ -29,6 +30,8 @@ export default class Webhooks {
         name: string,
         event: string
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
 
         try {
             const formData = new FormData();
@@ -60,6 +63,8 @@ export default class Webhooks {
         url: string,
         parameter: string
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
 
         try {
             const formData = new FormData();

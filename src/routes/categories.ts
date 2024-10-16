@@ -8,6 +8,7 @@ import {
     IProductsInCategory,
     IShopobjectsInCategory
 } from "../types/categories";
+import checkSecretKey from "../helpers/secretKey";
 
 export default class Categories {
 
@@ -396,6 +397,8 @@ export default class Categories {
         seo: object = {},
     ): Promise<object> {
 
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
@@ -435,6 +438,8 @@ export default class Categories {
         seo: object = {},
     ): Promise<object> {
 
+        checkSecretKey(this.licence_secret_key);
+
         try {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
@@ -466,6 +471,8 @@ export default class Categories {
     public async deleteCategory(
         id_category: number,
     ): Promise<object> {
+
+        checkSecretKey(this.licence_secret_key);
 
         try {
             const formData = new FormData();

@@ -29,13 +29,12 @@ export default class Sleekshop {
         public endpoint: string,
         public licence_username: string,
         public licence_password: string,
-        public licence_secret_key: string,
+        public licence_secret_key: string = '',
         public default_language: string = "de_DE",
     ) {
         if (!endpoint) throw new Error("endpoint is required.");
         if (!licence_username) throw new Error("licence_username is required.");
         if (!licence_password) throw new Error("licence_password is required.");
-        if (!licence_secret_key) throw new Error("licence_secret_key is required.");
 
         this.instance = axios.create({
             baseURL: this.endpoint,
