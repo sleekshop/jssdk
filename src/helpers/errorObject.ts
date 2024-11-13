@@ -5,9 +5,7 @@ export default class ErrorObject {
     public genericError(data: Object): Object {
         return {
             object: "error",
-            data: {
-                data
-            }
+            data
         };
     }
 

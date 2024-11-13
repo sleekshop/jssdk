@@ -28,8 +28,14 @@ export default class Classes {
      * @public
      */
     public async getClassDetails(
-        id_class: number,
-        language: string = this.default_language,
+        {
+            id_class,
+            language = this.default_language,
+        }:
+        {
+            id_class: number,
+            language: string,
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -60,8 +66,13 @@ export default class Classes {
      * @public
      */
     public async createClass(
-        name: string,
-        type: string,
+        {
+            name,
+            type,
+        }: {
+            name: string;
+            type: string;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -90,7 +101,11 @@ export default class Classes {
      * @public
      */
     public async deleteClass(
-        id_class: number,
+        {
+            id_class,
+        }: {
+            id_class: number;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -119,8 +134,13 @@ export default class Classes {
      * @public
      */
     public async createClassAttributes(
-        id_class: number,
-        attributes: Array<object>,
+        {
+            id_class,
+            attributes,
+        }: {
+            id_class: number;
+            attributes: Array<object>;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -150,8 +170,13 @@ export default class Classes {
      * @public
      */
     public async deleteClassAttributes(
-        id_class: number,
-        attributes: Array<string>,
+        {
+            id_class,
+            attributes,
+        }: {
+            id_class: number;
+            attributes: Array<string>;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -171,7 +196,6 @@ export default class Classes {
             return new ErrorObject().genericError(error);
         }
     }
-
 
 
 }

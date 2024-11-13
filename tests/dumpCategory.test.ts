@@ -9,9 +9,9 @@ describe("dumpCategory", () => {
             "jYkL7fPmQw2eVtNgHs3S", // licence password
             "jYkL7fPmQw2eVtNgHs3S" // optional licence secret key - required for some API calls
         );
-        const dumpCategory = await sleekshop.categories.dumpCategory(
-            191111,
-        );
+        const dumpCategory = await sleekshop.categories.dumpCategory({
+            id_category: 191111
+        });
         console.log(dumpCategory);
 
         expect(dumpCategory).toHaveProperty("object", "category_dump");

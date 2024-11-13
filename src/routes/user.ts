@@ -30,15 +30,23 @@ export default class User {
      */
 
     public async registerUser(
-        username: string,
-        passwd1: string,
-        passwd2: string,
-        email: string,
-        language: string = this.default_language,
-        class_: string = "user"
+        {
+            username,
+            passwd1,
+            passwd2,
+            email,
+            language = this.default_language,
+            class_ = "user"
+        }:
+        {
+            username: string,
+            passwd1: string,
+            passwd2: string,
+            email: string,
+            language?: string
+            class_?: string
+        }
     ): Promise<object> {
-
-        if (passwd1 !== passwd2) return new ErrorObject().genericError({message: "Passwords do not match"});
 
         try {
             const formData = new FormData();
@@ -71,8 +79,14 @@ export default class User {
      * @public
      */
     public async verifyUser(
-        id_user: number,
-        session_id: string
+        {
+            id_user,
+            session_id
+        }:
+        {
+            id_user: number,
+            session_id: string
+        }
     ): Promise<object> {
 
         try {
@@ -101,9 +115,16 @@ export default class User {
      * @public
      */
     public async loginUser(
-        username: string,
-        password: string,
-        session: string
+        {
+            username,
+            password,
+            session
+        }:
+        {
+            username: string,
+            password: string,
+            session: string
+        }
     ): Promise<object> {
 
         try {
@@ -131,7 +152,7 @@ export default class User {
      * @public
      */
     public async logoutUser(
-        session: string
+        {session}: { session: string }
     ): Promise<object> {
 
         try {
@@ -160,13 +181,19 @@ export default class User {
      * @public
      */
     public async setUserPassword(
-        session: string,
-        old_passwd: string,
-        new_passwd1: string,
-        new_passwd2: string
+        {
+            session,
+            old_passwd,
+            new_passwd1,
+            new_passwd2
+        }:
+        {
+            session: string,
+            old_passwd: string,
+            new_passwd1: string,
+            new_passwd2: string
+        }
     ): Promise<object> {
-
-        if (new_passwd1 !== new_passwd2) return new ErrorObject().genericError({message: "Passwords do not match"});
 
         try {
             const formData = new FormData();
@@ -194,7 +221,7 @@ export default class User {
      * @public
      */
     public async resetUserPasswordInit(
-        email: string
+        {email}: { email: string }
     ): Promise<object> {
 
         try {
@@ -225,13 +252,19 @@ export default class User {
      * @public
      */
     public async resetUserPasswordSuccess(
-        session_id: string,
-        id_user: number,
-        new_passwd1: string,
-        new_passwd2: string
+        {
+            session_id,
+            id_user,
+            new_passwd1,
+            new_passwd2
+        }:
+        {
+            session_id: string,
+            id_user: number,
+            new_passwd1: string,
+            new_passwd2: string
+        }
     ): Promise<object> {
-
-        if (new_passwd1 !== new_passwd2) return new ErrorObject().genericError({message: "Passwords do not match"});
 
         try {
             const formData = new FormData();
@@ -260,7 +293,7 @@ export default class User {
      * @public
      */
     public async getUserOrders(
-        session: string
+        {session}: { session: string }
     ): Promise<object> {
 
         try {
@@ -286,7 +319,7 @@ export default class User {
      * @public
      */
     public async getUserData(
-        session: string
+        {session}: { session: string }
     ): Promise<object> {
 
         try {
@@ -312,7 +345,7 @@ export default class User {
      * @public
      */
     public async getUserById(
-        id_user: number
+        {id_user}: { id_user: number }
     ): Promise<object> {
 
         try {
@@ -339,8 +372,14 @@ export default class User {
      * @public
      */
     public async setUserData(
-        session: string,
-        attributes: object
+        {
+            session,
+            attributes
+        }:
+        {
+            session: string,
+            attributes: object
+        }
     ): Promise<object> {
 
         try {
@@ -368,8 +407,14 @@ export default class User {
      * @public
      */
     public async updateUserData(
-        id_user: number,
-        attributes: object
+        {
+            id_user,
+            attributes
+        }:
+        {
+            id_user: number,
+            attributes: object
+        }
     ): Promise<object> {
 
         try {
@@ -396,8 +441,14 @@ export default class User {
      * @public
      */
     public async instantLogin(
-        token: string,
-        application_token: string
+        {
+            token,
+            application_token
+        }:
+        {
+            token: string,
+            application_token: string
+        }
     ): Promise<object> {
 
         try {

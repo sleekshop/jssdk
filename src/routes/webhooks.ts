@@ -27,8 +27,13 @@ export default class Webhooks {
      * @return {Object} Object of created webhook.
      */
     public async createWebhook(
-        name: string,
-        event: string
+        {
+            name,
+            event
+        }: {
+            name: string;
+            event: string;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -59,9 +64,15 @@ export default class Webhooks {
      * @return {Object} Object of updated webhook.
      */
     public async updateWebhook(
-        name: string,
-        url: string,
-        parameter: string
+        {
+            name,
+            url,
+            parameter
+        }: {
+            name: string;
+            url: string;
+            parameter: string;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);

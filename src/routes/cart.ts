@@ -33,16 +33,30 @@ export default class Cart {
      * @public
      */
     public async addToCart(
-        session: string,
-        id_shopobject: number,
-        element_type: string,
-        id_parent_element: number = 0,
-        quantity: number = 1,
-        price_field: string = "price",
-        name_field: string = "name",
-        description_field: string,
-        language: string = this.default_language,
-        country: string = "DE"
+        {
+            session,
+            id_shopobject,
+            element_type,
+            id_parent_element = 0,
+            quantity = 1,
+            price_field = "price",
+            name_field = "name",
+            description_field = "short_description",
+            language = this.default_language,
+            country = "DE"
+        }:
+        {
+            session: string,
+            id_shopobject: number,
+            element_type: string,
+            id_parent_element?: number,
+            quantity?: number,
+            price_field?: string,
+            name_field?: string,
+            description_field?: string,
+            language?: string,
+            country?: string
+        }
     ): Promise<object> {
 
         try {
@@ -79,8 +93,14 @@ export default class Cart {
      */
 
     public async subFromCart(
-        session: string,
-        id_element: number
+        {
+            session,
+            id_element
+        }:
+        {
+            session: string,
+            id_element: number
+        }
     ): Promise<object> {
 
         try {
@@ -108,8 +128,14 @@ export default class Cart {
      * @public
      */
     public async delFromCart(
-        session: string,
-        id_element: number
+        {
+            session,
+            id_element
+        }:
+        {
+            session: string,
+            id_element: number
+        }
     ): Promise<object> {
 
         try {
@@ -136,7 +162,7 @@ export default class Cart {
      * @public
      */
     public async clearCart(
-        session: string
+        {session}: { session: string }
     ): Promise<object> {
 
         try {
@@ -162,7 +188,7 @@ export default class Cart {
      * @public
      */
     public async getCart(
-        session: string
+        {session}: { session: string }
     ): Promise<object> {
 
         try {

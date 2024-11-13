@@ -24,7 +24,7 @@ export default class Aggregation {
      * @public
      */
     public async aggregate(
-        pipe: object
+        { pipe }: { pipe: object }
     ): Promise<object> {
 
         try {

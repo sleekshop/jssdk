@@ -34,14 +34,25 @@ export default class Search {
      * @public
      */
     public async searchProducts(
-        constraint: object = {},
-        language: string = this.default_language,
-        country: string = "DE",
-        order_columns: Array<string> = [],
-        order_type: string = "ASC",
-        left_limit: number = 0,
-        right_limit: number = 0,
-        needed_attributes: Array<string> = []
+        {
+            constraint = {},
+            language = this.default_language,
+            country = "DE",
+            order_columns = [],
+            order_type = "ASC",
+            left_limit = 0,
+            right_limit = 0,
+            needed_attributes = []
+        }: {
+            constraint?: object;
+            language?: string;
+            country?: string;
+            order_columns?: Array<string>;
+            order_type?: string;
+            left_limit?: number;
+            right_limit?: number;
+            needed_attributes?: Array<string>;
+        }
     ): Promise<object> {
 
         try {
@@ -80,13 +91,23 @@ export default class Search {
      * @public
      */
     public async searchContents(
-        constraint: object = {},
-        language: string = this.default_language,
-        order_columns: Array<string> = [],
-        order_type: string = "ASC",
-        left_limit: number = 0,
-        right_limit: number = 0,
-        needed_attributes: Array<string> = []
+        {
+            constraint = {},
+            language = this.default_language,
+            order_columns = [],
+            order_type = "ASC",
+            left_limit = 0,
+            right_limit = 0,
+            needed_attributes = []
+        }: {
+            constraint?: object;
+            language?: string;
+            order_columns?: Array<string>;
+            order_type?: string;
+            left_limit?: number;
+            right_limit?: number;
+            needed_attributes?: Array<string>;
+        }
     ): Promise<object> {
 
         try {
@@ -120,9 +141,15 @@ export default class Search {
      * @public
      */
     public async searchDistinctProducts(
-        field: string,
-        constraint: object = {},
-        language: string = this.default_language
+        {
+            field,
+            constraint = {},
+            language = this.default_language
+        }: {
+            field: string;
+            constraint?: object;
+            language?: string;
+        }
     ): Promise<object> {
 
         try {
@@ -153,10 +180,17 @@ export default class Search {
      * @public
      */
     public async searchOrders(
-        constraint: object = {},
-        language: string = this.default_language,
-        left_limit: number = 0,
-        right_limit: number = 0
+        {
+            constraint = {},
+            language = this.default_language,
+            left_limit = 0,
+            right_limit = 0
+        }: {
+            constraint?: object;
+            language?: string;
+            left_limit?: number;
+            right_limit?: number;
+        }
     ): Promise<object> {
 
         try {
@@ -190,12 +224,21 @@ export default class Search {
      * @public
      */
     public async searchUsers(
-        constraint: object = {},
-        order_columns: Array<string> = [],
-        order: string = "ASC",
-        left_limit: number = 0,
-        right_limit: number = 0,
-        needed_attributes: Array<string> = []
+        {
+            constraint = {},
+            order_columns = [],
+            order = "ASC",
+            left_limit = 0,
+            right_limit = 0,
+            needed_attributes = []
+        }: {
+            constraint?: object;
+            order_columns?: Array<string>;
+            order?: string;
+            left_limit?: number;
+            right_limit?: number;
+            needed_attributes?: Array<string>;
+        }
     ): Promise<object> {
 
         try {
@@ -230,13 +273,23 @@ export default class Search {
      * @param {Array<String>} needed_attributes
      */
     public async searchWarehouseEntities(
-        constraint: object = {},
-        language: string = this.default_language,
-        order_columns: Array<string> = [],
-        order_type: string = "",
-        left_limit: number = 0,
-        right_limit: number = 0,
-        needed_attributes: Array<string> = []
+        {
+            constraint = {},
+            language = this.default_language,
+            order_columns = [],
+            order_type = "",
+            left_limit = 0,
+            right_limit = 0,
+            needed_attributes = []
+        }: {
+            constraint?: object;
+            language?: string;
+            order_columns?: Array<string>;
+            order_type?: string;
+            left_limit?: number;
+            right_limit?: number;
+            needed_attributes?: Array<string>;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);

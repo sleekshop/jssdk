@@ -1,4 +1,4 @@
-# Sleekshop JS SDK 2.1
+# Sleekshop JS SDK 3.0
 
 This is the official Sleekshop JS SDK for the Sleekshop API. It is a wrapper around the Sleekshop API, which provides a simple way to interact with the API.
 
@@ -116,7 +116,7 @@ sleekshop.sessions.getNewSession().then((session) => {
 |  +-- .createChannel()
 +-- sessions
 |  +-- .getNewSession()
-+-- shopobjects
++-- shopObjects
 |  +-- .getProductDetails()
 |  +-- .getContentDetails()
 |  +-- .seoGetProductDetails()
@@ -164,7 +164,7 @@ sleekshop.sessions.getNewSession().then((session) => {
 ### `.aggregate()`
 
 ```typescript
-public async aggregate(pipe: object): Promise<object> {
+public async aggregate({ pipe }: { pipe: object }): Promise<object> {
 ```
 
 ```javascript
@@ -180,7 +180,7 @@ public async aggregate(pipe: object): Promise<object> {
 ### `.applicationApiCall()`
 
 ```typescript
-public async applicationApiCall(application: string,app_request: string,args: object): Promise<object> {
+public async applicationApiCall({application, app_request, args}:{application: string,app_request: string,args: object}): Promise<object> {
 ```
 
 ```javascript
@@ -198,7 +198,7 @@ public async applicationApiCall(application: string,app_request: string,args: ob
 ### `.addToCart()`
 
 ```typescript
-public async addToCart(session: string,id_shopobject: number,element_type: string,id_parent_element: number = 0,quantity: number = 1,price_field: string = "price",name_field: string = "name",description_field: string,language: string = this.default_language,country: string = "DE"): Promise<object> {
+public async addToCart({session,id_shopobject,element_type,id_parent_element = 0,quantity = 1,price_field = "price",name_field = "name",description_field,language = this.default_language,country = "DE"}:{session: string,id_shopobject: number,element_type: string,id_parent_element: number,quantity: number,price_field: string,name_field: string,description_field: string,language: string,country: string}): Promise<object> {
 ```
 
 ```javascript
@@ -221,7 +221,7 @@ public async addToCart(session: string,id_shopobject: number,element_type: strin
 ### `.subFromCart()`
 
 ```typescript
-public async subFromCart(session: string,id_element: number): Promise<object> {
+public async subFromCart({session,id_element}:{session: string,id_element: number}): Promise<object> {
 ```
 
 ```javascript
@@ -236,7 +236,7 @@ public async subFromCart(session: string,id_element: number): Promise<object> {
 ### `.delFromCart()`
 
 ```typescript
-public async delFromCart(session: string,id_element: number): Promise<object> {
+public async delFromCart({session,id_element}:{session: string,id_element: number}): Promise<object> {
 ```
 
 ```javascript
@@ -251,7 +251,7 @@ public async delFromCart(session: string,id_element: number): Promise<object> {
 ### `.clearCart()`
 
 ```typescript
-public async clearCart(session: string): Promise<object> {
+public async clearCart({session}: { session: string }): Promise<object> {
 ```
 
 ```javascript
@@ -265,7 +265,7 @@ public async clearCart(session: string): Promise<object> {
 ### `.getCart()`
 
 ```typescript
-public async getCart(session: string): Promise<object> {
+public async getCart({session}: { session: string }): Promise<object> {
 ```
 
 ```javascript
@@ -281,7 +281,7 @@ public async getCart(session: string): Promise<object> {
 ### `.getCategories()`
 
 ```typescript
-public async getCategories(id_parent: number,language: string = this.default_language,): Promise<ICategories | object> {
+public async getCategories({id_parent,language = this.default_language,}:{id_parent: number,language: string,}): Promise<ICategories | object> {
 ```
 
 ```javascript
@@ -296,7 +296,7 @@ public async getCategories(id_parent: number,language: string = this.default_lan
 ### `.getProductsInCategory()`
 
 ```typescript
-public async getProductsInCategory(id_category: number,language: string = this.default_language,country: string = 'DE',order_columns: Array<string> = [],order: string = 'ASC',left_limit: number = 0,right_limit: number = 0,needed_attributes: Array<string> = [],): Promise<IProductsInCategory | object> {
+public async getProductsInCategory({id_category,language = this.default_language,country = 'DE',order_columns = [],order = 'ASC',left_limit = 0,right_limit = 0,needed_attributes = []}:{id_category: number,language: string,country: string,order_columns: Array<string>,order: string,left_limit: number,right_limit: number,needed_attributes: Array<string>}): Promise<IProductsInCategory | object> {
 ```
 
 ```javascript
@@ -317,7 +317,7 @@ public async getProductsInCategory(id_category: number,language: string = this.d
 ### `.getContentsInCategory()`
 
 ```typescript
-public async getContentsInCategory(id_category: number,language: string = this.default_language,order_columns: Array<string> = [],order: string = 'ASC',left_limit: number = 0,right_limit: number = 0,needed_attributes: Array<string> = [],): Promise<IContentsInCategory | object> {
+public async getContentsInCategory({id_category,language = this.default_language,order_columns = [],order = 'ASC',left_limit = 0,right_limit = 0,needed_attributes = [],}:{id_category: number,language: string,order_columns: Array<string>,order: string,left_limit: number,right_limit: number,needed_attributes: Array<string>}): Promise<IContentsInCategory | object> {
 ```
 
 ```javascript
@@ -337,7 +337,7 @@ public async getContentsInCategory(id_category: number,language: string = this.d
 ### `.getShopobjectsInCategory()`
 
 ```typescript
-public async getShopobjectsInCategory(id_category: number,language: string = this.default_language,country: string = 'DE',order_columns: Array<string> = [],order: string = 'ASC',left_limit: number = 0,right_limit: number = 0,needed_attributes: Array<string> = [],): Promise<IShopobjectsInCategory | object> {
+public async getShopobjectsInCategory({id_category,language = this.default_language,country = 'DE',order_columns = [],order = 'ASC',left_limit = 0,right_limit = 0,needed_attributes = [],}: {id_category: number,language: string,country: string,order_columns: Array<string>,order: string,left_limit: number,right_limit: number,needed_attributes: Array<string>,}): Promise<IShopobjectsInCategory | object> {
 ```
 
 ```javascript
@@ -358,7 +358,7 @@ public async getShopobjectsInCategory(id_category: number,language: string = thi
 ### `.dumpCategory()`
 
 ```typescript
-public async dumpCategory(id_category: number,language: string = 'de_DE',country: string = 'DE',order_columns: Array<string> = ['prio'],order: string = 'ASC',left_limit: number = 0,right_limit: number = 0,needed_attributes: Array<string> = [],): Promise<IDumpCategory | object> {
+public async dumpCategory({id_category,language = 'de_DE',country = 'DE',order_columns = ['prio'],order = 'ASC',left_limit = 0,right_limit = 0,depth = 0,needed_attributes = [],}: {id_category: number,language: string,country: string,order_columns: Array<string>,order: string,left_limit: number,right_limit: number,depth: number,needed_attributes: Array<string>,}): Promise<IDumpCategory | object> {
 ```
 
 ```javascript
@@ -369,6 +369,7 @@ public async dumpCategory(id_category: number,language: string = 'de_DE',country
 - **Parameter**: `order` (String) - 
 - **Parameter**: `left_limit` (Number) - 
 - **Parameter**: `right_limit` (Number) - 
+- **Parameter**: `depth` (Number) - 
 - **Parameter**: `needed_attributes` (Array) - 
 - **Returns**: IDumpCategory Object of products in category.
 - **Returns**: IDumpCategory | object
@@ -379,7 +380,7 @@ public async dumpCategory(id_category: number,language: string = 'de_DE',country
 ### `.seoGetProductsInCategory()`
 
 ```typescript
-public async seoGetProductsInCategory(permalink: string,language: string = this.default_language,country: string = 'DE',order_columns: Array<string> = [],order: string = 'ASC',left_limit: number = 0,right_limit: number = 0,needed_attributes: Array<string> = [],): Promise<object> {
+public async seoGetProductsInCategory({permalink,language = this.default_language,country = 'DE',order_columns = [],order = 'ASC',left_limit = 0,right_limit = 0,needed_attributes = [],}:{permalink: string,language: string,country: string,order_columns: Array<string>,order: string,left_limit: number,right_limit: number,needed_attributes: Array<string>,}): Promise<object> {
 ```
 
 ```javascript
@@ -400,7 +401,7 @@ public async seoGetProductsInCategory(permalink: string,language: string = this.
 ### `.seoGetContentsInCategory()`
 
 ```typescript
-public async seoGetContentsInCategory(permalink: string,order_columns: Array<string> = [],order: string = 'ASC',left_limit: number = 0,right_limit: number = 0,needed_attributes: Array<string> = [],): Promise<object> {
+public async seoGetContentsInCategory({permalink,order_columns = [],order = 'ASC',left_limit = 0,right_limit = 0,needed_attributes = [],}:{permalink: string,order_columns: Array<string>,order: string,left_limit: number,right_limit: number,needed_attributes: Array<string>,}): Promise<object> {
 ```
 
 ```javascript
@@ -419,7 +420,7 @@ public async seoGetContentsInCategory(permalink: string,order_columns: Array<str
 ### `.seoGetShopobjectsInCategory()`
 
 ```typescript
-public async seoGetShopobjectsInCategory(permalink: string,order_columns: Array<string> = [],order: string = 'ASC',left_limit: number = 0,right_limit: number = 0,needed_attributes: Array<string> = [],): Promise<object> {
+public async seoGetShopobjectsInCategory({permalink,order_columns = [],order = 'ASC',left_limit = 0,right_limit = 0,needed_attributes = [],}:{permalink: string,order_columns: Array<string>,order: string,left_limit: number,right_limit: number,needed_attributes: Array<string>,}): Promise<object> {
 ```
 
 ```javascript
@@ -438,7 +439,7 @@ public async seoGetShopobjectsInCategory(permalink: string,order_columns: Array<
 ### `.createCategory()`
 
 ```typescript
-public async createCategory(id_parent: number,name: string,labels: object = {},seo: object = {},): Promise<object> {
+public async createCategory({id_parent,name,labels = {},seo = {},}:{id_parent: number,name: string,labels: object,seo: object,}): Promise<object> {
 ```
 
 ```javascript
@@ -455,7 +456,7 @@ public async createCategory(id_parent: number,name: string,labels: object = {},s
 ### `.updateCategory()`
 
 ```typescript
-public async updateCategory(id_parent: number,name: string,labels: object = {},attributes: object = {},seo: object = {},): Promise<object> {
+public async updateCategory({id_parent,name,labels = {},attributes = {},seo = {},}:{id_parent: number,name: string,labels: object,attributes: object,seo: object,}): Promise<object> {
 ```
 
 ```javascript
@@ -473,7 +474,7 @@ public async updateCategory(id_parent: number,name: string,labels: object = {},a
 ### `.deleteCategory()`
 
 ```typescript
-public async deleteCategory(id_category: number,): Promise<object> {
+public async deleteCategory({id_category}: { id_category: number, }): Promise<object> {
 ```
 
 ```javascript
@@ -489,13 +490,13 @@ public async deleteCategory(id_category: number,): Promise<object> {
 ### `.getClassDetails()`
 
 ```typescript
-public async getClassDetails(id_class: number,language: string = this.default_language,): Promise<object> {
+public async getClassDetails({id_class,language = this.default_language,}:{id_class: number,language: string,}): Promise<object> {
 ```
 
 ```javascript
 - **Parameter**: `id_class` (Number) - 
 - **Parameter**: `language` (String) - 
-- **Returns**: object Object of session with either an existing or new session.
+- **Returns**: object Object of class details.
 - **Returns**: object
 ```
 
@@ -504,7 +505,7 @@ public async getClassDetails(id_class: number,language: string = this.default_la
 ### `.createClass()`
 
 ```typescript
-public async createClass(name: string,type: string,): Promise<object> {
+public async createClass({name,type,}: {name: string;type: string;}): Promise<object> {
 ```
 
 ```javascript
@@ -519,7 +520,7 @@ public async createClass(name: string,type: string,): Promise<object> {
 ### `.deleteClass()`
 
 ```typescript
-public async deleteClass(id_class: number,): Promise<object> {
+public async deleteClass({id_class,}: {id_class: number;}): Promise<object> {
 ```
 
 ```javascript
@@ -533,7 +534,7 @@ public async deleteClass(id_class: number,): Promise<object> {
 ### `.createClassAttributes()`
 
 ```typescript
-public async createClassAttributes(id_class: number,attributes: Array<object>,): Promise<object> {
+public async createClassAttributes({id_class,attributes,}: {id_class: number;attributes: Array<object>;}): Promise<object> {
 ```
 
 ```javascript
@@ -548,7 +549,7 @@ public async createClassAttributes(id_class: number,attributes: Array<object>,):
 ### `.deleteClassAttributes()`
 
 ```typescript
-public async deleteClassAttributes(id_class: number,attributes: Array<string>,): Promise<object> {
+public async deleteClassAttributes({id_class,attributes,}: {id_class: number;attributes: Array<string>;}): Promise<object> {
 ```
 
 ```javascript
@@ -565,7 +566,7 @@ public async deleteClassAttributes(id_class: number,attributes: Array<string>,):
 ### `.addCoupons()`
 
 ```typescript
-public async addCoupons(session: string,coupons: Array<string>): Promise<object> {
+public async addCoupons({session,coupons}:{session: string,coupons: Array<string>}): Promise<object> {
 ```
 
 ```javascript
@@ -580,7 +581,7 @@ public async addCoupons(session: string,coupons: Array<string>): Promise<object>
 ### `.createCoupons()`
 
 ```typescript
-public async createCoupons(count: number,name: string,amount: number): Promise<object> {
+public async createCoupons({count,name,amount}:{count: number,name: string,amount: number}): Promise<object> {
 ```
 
 ```javascript
@@ -598,7 +599,7 @@ public async createCoupons(count: number,name: string,amount: number): Promise<o
 ### `.setOrderDetails()`
 
 ```typescript
-public async setOrderDetails(session: string,id_payment_method: number,id_delivery_method: number,delivery_companyname: string,delivery_department: string,delivery_salutation: string,delivery_firstname: string,delivery_lastname: string,delivery_street: string,delivery_number: string,delivery_zip: string,delivery_state: string,delivery_city: string,delivery_country: string,invoice_companyname: string,invoice_department: string,invoice_salutation: string,invoice_firstname: string,invoice_lastname: string,invoice_street: string,invoice_number: string,invoice_zip: string,invoice_state: string,invoice_city: string,invoice_country: string,note: string,email: string,phone: string,attributes: Array<object> = []): Promise<object> {
+public async setOrderDetails({session,id_payment_method = null,id_delivery_method = null,delivery_companyname = null,delivery_department = null,delivery_salutation = null,delivery_firstname = null,delivery_lastname = null,delivery_street = null,delivery_number = null,delivery_zip = null,delivery_state = null,delivery_city = null,delivery_country = null,invoice_companyname = null,invoice_department = null,invoice_salutation = null,invoice_firstname = null,invoice_lastname = null,invoice_street = null,invoice_number = null,invoice_zip = null,invoice_state = null,invoice_city = null,invoice_country = null,note = null,email = null,phone = null,attributes = null}: {session: string;id_payment_method?: number | null;id_delivery_method?: number | null;delivery_companyname?: string | null;delivery_department?: string | null;delivery_salutation?: string | null;delivery_firstname?: string | null;delivery_lastname?: string | null;delivery_street?: string | null;delivery_number?: string | null;delivery_zip?: string | null;delivery_state?: string | null;delivery_city?: string | null;delivery_country?: string | null;invoice_companyname?: string | null;invoice_department?: string | null;invoice_salutation?: string | null;invoice_firstname?: string | null;invoice_lastname?: string | null;invoice_street?: string | null;invoice_number?: string | null;invoice_zip?: string | null;invoice_state?: string | null;invoice_city?: string | null;invoice_country?: string | null;note?: string | null;email?: string | null;phone?: string | null;attributes?: Array<object> | null;}): Promise<object> {
 ```
 
 ```javascript
@@ -652,7 +653,7 @@ public async getDeliveryCountries(): Promise<object> {
 ### `.updateOrderDetails()`
 
 ```typescript
-public async updateOrderDetails(id_order: number,id_payment_method: number,id_delivery_method: number,order_state: string,order_payment_state: string,order_delivery_state: string,delivery_companyname: string,delivery_department: string,delivery_salutation: string,delivery_firstname: string,delivery_lastname: string,delivery_street: string,delivery_number: string,delivery_zip: string,delivery_state: string,delivery_city: string,delivery_country: string,invoice_companyname: string,invoice_department: string,invoice_salutation: string,invoice_firstname: string,invoice_lastname: string,invoice_street: string,invoice_number: string,invoice_zip: string,invoice_state: string,invoice_city: string,invoice_country: string,note: string,email: string,phone: string,attributes: Array<object> = []): Promise<object> {
+public async updateOrderDetails({id_order,id_payment_method = null,id_delivery_method = null,order_state = null,order_payment_state = null,order_delivery_state = null,delivery_companyname = null,delivery_department = null,delivery_salutation = null,delivery_firstname = null,delivery_lastname = null,delivery_street = null,delivery_number = null,delivery_zip = null,delivery_state = null,delivery_city = null,delivery_country = null,invoice_companyname = null,invoice_department = null,invoice_salutation = null,invoice_firstname = null,invoice_lastname = null,invoice_street = null,invoice_number = null,invoice_zip = null,invoice_state = null,invoice_city = null,invoice_country = null,note = null,email = null,phone = null,attributes = null}: {id_order: number;id_payment_method: number | null;id_delivery_method: number | null;order_state: string | null;order_payment_state: string | null;order_delivery_state: string | null;delivery_companyname: string | null;delivery_department: string | null;delivery_salutation: string | null;delivery_firstname: string | null;delivery_lastname: string | null;delivery_street: string | null;delivery_number: string | null;delivery_zip: string | null;delivery_state: string | null;delivery_city: string | null;delivery_country: string | null;invoice_companyname: string | null;invoice_department: string | null;invoice_salutation: string | null;invoice_firstname: string | null;invoice_lastname: string | null;invoice_street: string | null;invoice_number: string | null;invoice_zip: string | null;invoice_state: string | null;invoice_city: string | null;invoice_country: string | null;note: string | null;email: string | null;phone: string | null;attributes?: Array<object> | null;}): Promise<object> {
 ```
 
 ```javascript
@@ -697,7 +698,7 @@ public async updateOrderDetails(id_order: number,id_payment_method: number,id_de
 ### `.getOrderDetails()`
 
 ```typescript
-public async getOrderDetails(session: string): Promise<object> {
+public async getOrderDetails({session}: {session: string;}): Promise<object> {
 ```
 
 ```javascript
@@ -711,7 +712,7 @@ public async getOrderDetails(session: string): Promise<object> {
 ### `.getOrderById()`
 
 ```typescript
-public async getOrderById(id_order: number,language: string = this.default_language): Promise<object> {
+public async getOrderById({id_order,language = this.default_language}: {id_order: number;language?: string;}): Promise<object> {
 ```
 
 ```javascript
@@ -726,7 +727,7 @@ public async getOrderById(id_order: number,language: string = this.default_langu
 ### `.checkout()`
 
 ```typescript
-public async checkout(session: string): Promise<object> {
+public async checkout({session}: {session: string;}): Promise<object> {
 ```
 
 ```javascript
@@ -740,7 +741,7 @@ public async checkout(session: string): Promise<object> {
 ### `.getInvoice()`
 
 ```typescript
-public async getInvoice(id_order: number): Promise<object> {
+public async getInvoice({id_order}: {id_order: number;}): Promise<object> {
 ```
 
 ```javascript
@@ -754,7 +755,7 @@ public async getInvoice(id_order: number): Promise<object> {
 ### `.getOrderConfirmation()`
 
 ```typescript
-public async getOrderConfirmation(id_order: number,args: object = {}): Promise<object> {
+public async getOrderConfirmation({id_order,args = {}}: {id_order: number;args?: object;}): Promise<object> {
 ```
 
 ```javascript
@@ -783,7 +784,7 @@ public async getPaymentMethods(): Promise<object> {
 ### `.doPayment()`
 
 ```typescript
-public async doPayment(id_order: number,args: Array<any> = []): Promise<object> {
+public async doPayment({id_order,args = []}: {id_order: number;args?: Array<any>;}): Promise<object> {
 ```
 
 ```javascript
@@ -798,7 +799,7 @@ public async doPayment(id_order: number,args: Array<any> = []): Promise<object> 
 ### `.addDeliveryCosts()`
 
 ```typescript
-public async addDeliveryCosts(session: string,delivery_costs: Array<any> = []): Promise<object> {
+public async addDeliveryCosts({session,delivery_costs = []}: {session: string;delivery_costs?: Array<any>;}): Promise<object> {
 ```
 
 ```javascript
@@ -815,7 +816,7 @@ public async addDeliveryCosts(session: string,delivery_costs: Array<any> = []): 
 ### `.searchProducts()`
 
 ```typescript
-public async searchProducts(constraint: object = {},language: string = this.default_language,country: string = "DE",order_columns: Array<string> = [],order_type: string = "ASC",left_limit: number = 0,right_limit: number = 0,needed_attributes: Array<string> = []): Promise<object> {
+public async searchProducts({constraint = {},language = this.default_language,country = "DE",order_columns = [],order_type = "ASC",left_limit = 0,right_limit = 0,needed_attributes = []}: {constraint?: object;language?: string;country?: string;order_columns?: Array<string>;order_type?: string;left_limit?: number;right_limit?: number;needed_attributes?: Array<string>;}): Promise<object> {
 ```
 
 ```javascript
@@ -836,7 +837,7 @@ public async searchProducts(constraint: object = {},language: string = this.defa
 ### `.searchContents()`
 
 ```typescript
-public async searchContents(constraint: object = {},language: string = this.default_language,order_columns: Array<string> = [],order_type: string = "ASC",left_limit: number = 0,right_limit: number = 0,needed_attributes: Array<string> = []): Promise<object> {
+public async searchContents({constraint = {},language = this.default_language,order_columns = [],order_type = "ASC",left_limit = 0,right_limit = 0,needed_attributes = []}: {constraint?: object;language?: string;order_columns?: Array<string>;order_type?: string;left_limit?: number;right_limit?: number;needed_attributes?: Array<string>;}): Promise<object> {
 ```
 
 ```javascript
@@ -856,7 +857,7 @@ public async searchContents(constraint: object = {},language: string = this.defa
 ### `.searchDistinctProducts()`
 
 ```typescript
-public async searchDistinctProducts(field: string,constraint: object = {},language: string = this.default_language): Promise<object> {
+public async searchDistinctProducts({field,constraint = {},language = this.default_language}: {field: string;constraint?: object;language?: string;}): Promise<object> {
 ```
 
 ```javascript
@@ -872,7 +873,7 @@ public async searchDistinctProducts(field: string,constraint: object = {},langua
 ### `.searchOrders()`
 
 ```typescript
-public async searchOrders(constraint: object = {},language: string = this.default_language,left_limit: number = 0,right_limit: number = 0): Promise<object> {
+public async searchOrders({constraint = {},language = this.default_language,left_limit = 0,right_limit = 0}: {constraint?: object;language?: string;left_limit?: number;right_limit?: number;}): Promise<object> {
 ```
 
 ```javascript
@@ -889,7 +890,7 @@ public async searchOrders(constraint: object = {},language: string = this.defaul
 ### `.searchUsers()`
 
 ```typescript
-public async searchUsers(constraint: object = {},order_columns: Array<string> = [],order: string = "ASC",left_limit: number = 0,right_limit: number = 0,needed_attributes: Array<string> = []): Promise<object> {
+public async searchUsers({constraint = {},order_columns = [],order = "ASC",left_limit = 0,right_limit = 0,needed_attributes = []}: {constraint?: object;order_columns?: Array<string>;order?: string;left_limit?: number;right_limit?: number;needed_attributes?: Array<string>;}): Promise<object> {
 ```
 
 ```javascript
@@ -908,7 +909,7 @@ public async searchUsers(constraint: object = {},order_columns: Array<string> = 
 ### `.searchWarehouseEntities()`
 
 ```typescript
-public async searchWarehouseEntities(constraint: object = {},language: string = this.default_language,order_columns: Array<string> = [],order_type: string = "",left_limit: number = 0,right_limit: number = 0,needed_attributes: Array<string> = []): Promise<object> {
+public async searchWarehouseEntities({constraint = {},language = this.default_language,order_columns = [],order_type = "",left_limit = 0,right_limit = 0,needed_attributes = []}: {constraint?: object;language?: string;order_columns?: Array<string>;order_type?: string;left_limit?: number;right_limit?: number;needed_attributes?: Array<string>;}): Promise<object> {
 ```
 
 ```javascript
@@ -941,7 +942,7 @@ public async getStatus(): Promise<object> {
 ### `.createChannel()`
 
 ```typescript
-public async createChannel(name: string,description: string,shop_active: number,server_output: string = 'json'): Promise<object> {
+public async createChannel({name,description,shop_active,server_output = 'json'}: {name: string;description: string;shop_active: number;server_output?: string;}): Promise<object> {
 ```
 
 ```javascript
@@ -974,7 +975,7 @@ public async getNewSession(): Promise<ISession | object> {
 ### `.getProductDetails()`
 
 ```typescript
-public async getProductDetails(id_product: number,language: string = this.default_language,country: string = "DE",needed_attributes: Array<string> = []): Promise<object> {
+public async getProductDetails({id_product,language = this.default_language,country = "DE",needed_attributes = []}: {id_product: number;language?: string;country?: string;needed_attributes?: Array<string>;}): Promise<object> {
 ```
 
 ```javascript
@@ -991,7 +992,7 @@ public async getProductDetails(id_product: number,language: string = this.defaul
 ### `.getContentDetails()`
 
 ```typescript
-public async getContentDetails(id_content: number,language: string = this.default_language): Promise<object> {
+public async getContentDetails({id_content,language = this.default_language}: {id_content: number;language?: string;}): Promise<object> {
 ```
 
 ```javascript
@@ -1006,7 +1007,7 @@ public async getContentDetails(id_content: number,language: string = this.defaul
 ### `.seoGetProductDetails()`
 
 ```typescript
-public async seoGetProductDetails(permalink: string,country: string = "DE",needed_attributes: Array<string> = []): Promise<object> {
+public async seoGetProductDetails({permalink,country = "DE",needed_attributes = []}: {permalink: string;country?: string;needed_attributes?: Array<string>;}): Promise<object> {
 ```
 
 ```javascript
@@ -1022,7 +1023,7 @@ public async seoGetProductDetails(permalink: string,country: string = "DE",neede
 ### `.seoGetContentDetails()`
 
 ```typescript
-public async seoGetContentDetails(permalink: string): Promise<object> {
+public async seoGetContentDetails({permalink}: {permalink: string;}): Promise<object> {
 ```
 
 ```javascript
@@ -1036,7 +1037,7 @@ public async seoGetContentDetails(permalink: string): Promise<object> {
 ### `.createProduct()`
 
 ```typescript
-public async createProduct(class_: string,name: string,shop_active: number = 1,attributes: object = {},metadata: object = {},seo: object = {},availability: object = {}): Promise<object> {
+public async createProduct({class_,name,shop_active = 1,attributes = null,metadata = null,seo = null,availability = null}: {class_: string;name: string;shop_active?: number | null;attributes?: object | null;metadata?: object | null;seo?: object | null;availability?: object | null;}): Promise<object> {
 ```
 
 ```javascript
@@ -1056,7 +1057,7 @@ public async createProduct(class_: string,name: string,shop_active: number = 1,a
 ### `.updateProduct()`
 
 ```typescript
-public async updateProduct(id_product: number,name: string,shop_active: number = 1,attributes: object = {},metadata: object = {},seo: object = {},availability: object = {}): Promise<object> {
+public async updateProduct({id_product,name = null,shop_active = 1,attributes = null,metadata = null,seo = null,availability = null}: {id_product: number;name: string | null;shop_active?: number | null;attributes?: object | null;metadata?: object | null;seo?: object | null;availability?: object | null;}): Promise<object> {
 ```
 
 ```javascript
@@ -1076,7 +1077,7 @@ public async updateProduct(id_product: number,name: string,shop_active: number =
 ### `.createVariation()`
 
 ```typescript
-public async createVariation(id_product: number,name: string,shop_active: number = 1,attributes: object = {},metadata: object = {},seo: object = {},availability: object = {}): Promise<object> {
+public async createVariation({id_product,name,shop_active = 1,attributes = null,metadata = null,seo = null,availability = null}: {id_product: number;name: string;shop_active?: number;attributes?: object | null;metadata?: object | null;seo?: object | null;availability?: object | null;}): Promise<object> {
 ```
 
 ```javascript
@@ -1096,7 +1097,7 @@ public async createVariation(id_product: number,name: string,shop_active: number
 ### `.deleteProduct()`
 
 ```typescript
-public async deleteProduct(id_product: number): Promise<object> {
+public async deleteProduct({id_product}: {id_product: number;}): Promise<object> {
 ```
 
 ```javascript
@@ -1110,7 +1111,7 @@ public async deleteProduct(id_product: number): Promise<object> {
 ### `.deleteContent()`
 
 ```typescript
-public async deleteContent(id_content: number): Promise<object> {
+public async deleteContent({id_content}: {id_content: number;}): Promise<object> {
 ```
 
 ```javascript
@@ -1124,7 +1125,7 @@ public async deleteContent(id_content: number): Promise<object> {
 ### `.updateContent()`
 
 ```typescript
-public async updateContent(id_content: number,name: string,shop_active: number = 1,attributes: object = {},seo: object = {}): Promise<object> {
+public async updateContent({id_content,name = null,shop_active = 1,attributes = null,seo = null}: {id_content: number;name?: string | null;shop_active?: number;attributes?: object | null;seo?: object | null;}): Promise<object> {
 ```
 
 ```javascript
@@ -1144,7 +1145,7 @@ public async updateContent(id_content: number,name: string,shop_active: number =
 ### `.registerUser()`
 
 ```typescript
-public async registerUser(username: string,passwd1: string,passwd2: string,email: string,language: string = this.default_language,class_: string = "user"): Promise<object> {
+public async registerUser({username,passwd1,passwd2,email,language = this.default_language,class_ = "user"}:{username: string,passwd1: string,passwd2: string,email: string,language?: stringclass_?: string}): Promise<object> {
 ```
 
 ```javascript
@@ -1163,7 +1164,7 @@ public async registerUser(username: string,passwd1: string,passwd2: string,email
 ### `.verifyUser()`
 
 ```typescript
-public async verifyUser(id_user: number,session_id: string): Promise<object> {
+public async verifyUser({id_user,session_id}:{id_user: number,session_id: string}): Promise<object> {
 ```
 
 ```javascript
@@ -1178,7 +1179,7 @@ public async verifyUser(id_user: number,session_id: string): Promise<object> {
 ### `.loginUser()`
 
 ```typescript
-public async loginUser(username: string,password: string,session: string): Promise<object> {
+public async loginUser({username,password,session}:{username: string,password: string,session: string}): Promise<object> {
 ```
 
 ```javascript
@@ -1194,7 +1195,7 @@ public async loginUser(username: string,password: string,session: string): Promi
 ### `.logoutUser()`
 
 ```typescript
-public async logoutUser(session: string): Promise<object> {
+public async logoutUser({session}: { session: string }): Promise<object> {
 ```
 
 ```javascript
@@ -1208,7 +1209,7 @@ public async logoutUser(session: string): Promise<object> {
 ### `.setUserPassword()`
 
 ```typescript
-public async setUserPassword(session: string,old_passwd: string,new_passwd1: string,new_passwd2: string): Promise<object> {
+public async setUserPassword({session,old_passwd,new_passwd1,new_passwd2}:{session: string,old_passwd: string,new_passwd1: string,new_passwd2: string}): Promise<object> {
 ```
 
 ```javascript
@@ -1225,7 +1226,7 @@ public async setUserPassword(session: string,old_passwd: string,new_passwd1: str
 ### `.resetUserPasswordInit()`
 
 ```typescript
-public async resetUserPasswordInit(email: string): Promise<object> {
+public async resetUserPasswordInit({email}: { email: string }): Promise<object> {
 ```
 
 ```javascript
@@ -1239,7 +1240,7 @@ public async resetUserPasswordInit(email: string): Promise<object> {
 ### `.resetUserPasswordSuccess()`
 
 ```typescript
-public async resetUserPasswordSuccess(session_id: string,id_user: number,new_passwd1: string,new_passwd2: string): Promise<object> {
+public async resetUserPasswordSuccess({session_id,id_user,new_passwd1,new_passwd2}:{session_id: string,id_user: number,new_passwd1: string,new_passwd2: string}): Promise<object> {
 ```
 
 ```javascript
@@ -1256,7 +1257,7 @@ public async resetUserPasswordSuccess(session_id: string,id_user: number,new_pas
 ### `.getUserOrders()`
 
 ```typescript
-public async getUserOrders(session: string): Promise<object> {
+public async getUserOrders({session}: { session: string }): Promise<object> {
 ```
 
 ```javascript
@@ -1270,7 +1271,7 @@ public async getUserOrders(session: string): Promise<object> {
 ### `.getUserData()`
 
 ```typescript
-public async getUserData(session: string): Promise<object> {
+public async getUserData({session}: { session: string }): Promise<object> {
 ```
 
 ```javascript
@@ -1284,7 +1285,7 @@ public async getUserData(session: string): Promise<object> {
 ### `.getUserById()`
 
 ```typescript
-public async getUserById(id_user: number): Promise<object> {
+public async getUserById({id_user}: { id_user: number }): Promise<object> {
 ```
 
 ```javascript
@@ -1298,7 +1299,7 @@ public async getUserById(id_user: number): Promise<object> {
 ### `.setUserData()`
 
 ```typescript
-public async setUserData(session: string,attributes: object): Promise<object> {
+public async setUserData({session,attributes}:{session: string,attributes: object}): Promise<object> {
 ```
 
 ```javascript
@@ -1313,7 +1314,7 @@ public async setUserData(session: string,attributes: object): Promise<object> {
 ### `.updateUserData()`
 
 ```typescript
-public async updateUserData(id_user: number,attributes: object): Promise<object> {
+public async updateUserData({id_user,attributes}:{id_user: number,attributes: object}): Promise<object> {
 ```
 
 ```javascript
@@ -1328,7 +1329,7 @@ public async updateUserData(id_user: number,attributes: object): Promise<object>
 ### `.instantLogin()`
 
 ```typescript
-public async instantLogin(token: string,application_token: string): Promise<object> {
+public async instantLogin({token,application_token}:{token: string,application_token: string}): Promise<object> {
 ```
 
 ```javascript
@@ -1345,7 +1346,7 @@ public async instantLogin(token: string,application_token: string): Promise<obje
 ### `.createWarehouseEntity()`
 
 ```typescript
-public async createWarehouseEntity(class_: string,name: string,id_manufacturer: number,attributes: object,metadata: object): Promise<object> {
+public async createWarehouseEntity({class_,name,id_manufacturer,attributes,metadata}: {class_: string;name: string;id_manufacturer: number;attributes: object;metadata: object;}): Promise<object> {
 ```
 
 ```javascript
@@ -1363,7 +1364,7 @@ public async createWarehouseEntity(class_: string,name: string,id_manufacturer: 
 ### `.updateWarehouseEntity()`
 
 ```typescript
-public async updateWarehouseEntity(id_warehouse_entity: number,name: string,id_manufacturer: number,attributes: object,metadata: object): Promise<object> {
+public async updateWarehouseEntity({id_warehouse_entity,name,id_manufacturer,attributes,metadata}: {id_warehouse_entity: number;name: string;id_manufacturer: number;attributes: object;metadata: object;}): Promise<object> {
 ```
 
 ```javascript
@@ -1381,7 +1382,7 @@ public async updateWarehouseEntity(id_warehouse_entity: number,name: string,id_m
 ### `.deleteWarehouseEntity()`
 
 ```typescript
-public async deleteWarehouseEntity(id_warehouse_entity: number): Promise<object> {
+public async deleteWarehouseEntity({id_warehouse_entity}: {id_warehouse_entity: number;}): Promise<object> {
 ```
 
 ```javascript
@@ -1395,7 +1396,7 @@ public async deleteWarehouseEntity(id_warehouse_entity: number): Promise<object>
 ### `.inventoryPlace()`
 
 ```typescript
-public async inventoryPlace(storage: string,element_number: string,quantity: number,note: string): Promise<object> {
+public async inventoryPlace({storage,element_number,quantity,note}: {storage: string;element_number: string;quantity: number;note: string;}): Promise<object> {
 ```
 
 ```javascript
@@ -1412,7 +1413,7 @@ public async inventoryPlace(storage: string,element_number: string,quantity: num
 ### `.inventoryTake()`
 
 ```typescript
-public async inventoryTake(storage: string,element_number: string,quantity: number,note: string): Promise<object> {
+public async inventoryTake({storage,element_number,quantity,note}: {storage: string;element_number: string;quantity: number;note: string;}): Promise<object> {
 ```
 
 ```javascript
@@ -1429,7 +1430,7 @@ public async inventoryTake(storage: string,element_number: string,quantity: numb
 ### `.addBinding()`
 
 ```typescript
-public async addBinding(id_product: number,element_number: string,quantity: number = 1): Promise<object> {
+public async addBinding({id_product,element_number,quantity = 1}: {id_product: number;element_number: string;quantity?: number;}): Promise<object> {
 ```
 
 ```javascript
@@ -1445,7 +1446,7 @@ public async addBinding(id_product: number,element_number: string,quantity: numb
 ### `.deleteBinding()`
 
 ```typescript
-public async deleteBinding(id_product: number,element_number: string): Promise<object> {
+public async deleteBinding({id_product,element_number}:{id_product: number,element_number: string}): Promise<object> {
 ```
 
 ```javascript
@@ -1462,7 +1463,7 @@ public async deleteBinding(id_product: number,element_number: string): Promise<o
 ### `.createWebhook()`
 
 ```typescript
-public async createWebhook(name: string,event: string): Promise<object> {
+public async createWebhook({name,event}: {name: string;event: string;}): Promise<object> {
 ```
 
 ```javascript
@@ -1477,7 +1478,7 @@ public async createWebhook(name: string,event: string): Promise<object> {
 ### `.updateWebhook()`
 
 ```typescript
-public async updateWebhook(name: string,url: string,parameter: string): Promise<object> {
+public async updateWebhook({name,url,parameter}: {name: string;url: string;parameter: string;}): Promise<object> {
 ```
 
 ```javascript

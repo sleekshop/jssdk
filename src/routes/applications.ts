@@ -25,9 +25,12 @@ export default class Applications {
      * @return {Object} Object of application api call.
      */
     public async applicationApiCall(
-        application: string,
-        app_request: string,
-        args: object
+        {application, app_request, args}:
+        {
+            application: string,
+            app_request: string,
+            args: object
+        }
     ): Promise<object> {
 
         try {

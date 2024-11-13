@@ -27,8 +27,14 @@ export default class Coupons {
      * @return {Object} Object of added coupons.
      */
     public async addCoupons(
-        session: string,
-        coupons: Array<string>
+        {
+            session,
+            coupons
+        }:
+        {
+            session: string,
+            coupons: Array<string>
+        }
     ): Promise<object> {
 
         try {
@@ -56,9 +62,16 @@ export default class Coupons {
      * @return {Object} Object of created coupons.
      */
     public async createCoupons(
-        count: number,
-        name: string,
-        amount: number
+        {
+            count,
+            name,
+            amount
+        }:
+        {
+            count: number,
+            name: string,
+            amount: number
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);

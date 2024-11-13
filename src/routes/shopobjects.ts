@@ -30,10 +30,17 @@ export default class ShopObjects {
      * @public
      */
     public async getProductDetails(
-        id_product: number,
-        language: string = this.default_language,
-        country: string = "DE",
-        needed_attributes: Array<string> = []
+        {
+            id_product,
+            language = this.default_language,
+            country = "DE",
+            needed_attributes = []
+        }: {
+            id_product: number;
+            language?: string;
+            country?: string;
+            needed_attributes?: Array<string>;
+        }
     ): Promise<object> {
 
         try {
@@ -63,8 +70,13 @@ export default class ShopObjects {
      * @public
      */
     public async getContentDetails(
-        id_content: number,
-        language: string = this.default_language
+        {
+            id_content,
+            language = this.default_language
+        }: {
+            id_content: number;
+            language?: string;
+        }
     ): Promise<object> {
 
         try {
@@ -93,9 +105,15 @@ export default class ShopObjects {
      * @public
      */
     public async seoGetProductDetails(
-        permalink: string,
-        country: string = "DE",
-        needed_attributes: Array<string> = []
+        {
+            permalink,
+            country = "DE",
+            needed_attributes = []
+        }: {
+            permalink: string;
+            country?: string;
+            needed_attributes?: Array<string>;
+        }
     ): Promise<object> {
 
         try {
@@ -123,7 +141,11 @@ export default class ShopObjects {
      * @public
      */
     public async seoGetContentDetails(
-        permalink: string
+        {
+            permalink
+        }: {
+            permalink: string;
+        }
     ): Promise<object> {
 
         try {
@@ -154,13 +176,23 @@ export default class ShopObjects {
      * @public
      */
     public async createProduct(
-        class_: string,
-        name: string,
-        shop_active: number = 1,
-        attributes: object = {},
-        metadata: object = {},
-        seo: object = {},
-        availability: object = {}
+        {
+            class_,
+            name,
+            shop_active = 1,
+            attributes = null,
+            metadata = null,
+            seo = null,
+            availability = null
+        }: {
+            class_: string;
+            name: string;
+            shop_active?: number | null;
+            attributes?: object | null;
+            metadata?: object | null;
+            seo?: object | null;
+            availability?: object | null;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -173,11 +205,11 @@ export default class ShopObjects {
             formData.append('request', "create_product");
             formData.append('class', class_);
             formData.append('name', name);
-            formData.append('shop_active', shop_active.toString());
-            formData.append('attributes', JSON.stringify(attributes));
-            formData.append('metadata', JSON.stringify(metadata));
-            formData.append('seo', JSON.stringify(seo));
-            formData.append('availability', JSON.stringify(availability));
+            if (shop_active) formData.append('shop_active', shop_active.toString());
+            if (attributes) formData.append('attributes', JSON.stringify(attributes));
+            if (metadata) formData.append('metadata', JSON.stringify(metadata));
+            if (seo) formData.append('seo', JSON.stringify(seo));
+            if (availability) formData.append('availability', JSON.stringify(availability));
 
             let createProduct = await this.instance.post('', formData);
             return createProduct.data;
@@ -200,13 +232,23 @@ export default class ShopObjects {
      * @public
      */
     public async updateProduct(
-        id_product: number,
-        name: string,
-        shop_active: number = 1,
-        attributes: object = {},
-        metadata: object = {},
-        seo: object = {},
-        availability: object = {}
+        {
+            id_product,
+            name = null,
+            shop_active = 1,
+            attributes = null,
+            metadata = null,
+            seo = null,
+            availability = null
+        }: {
+            id_product: number;
+            name: string | null;
+            shop_active?: number | null;
+            attributes?: object | null;
+            metadata?: object | null;
+            seo?: object | null;
+            availability?: object | null;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -218,12 +260,12 @@ export default class ShopObjects {
             formData.append('licence_secret_key', this.licence_secret_key);
             formData.append('request', "update_product");
             formData.append('id_product', id_product.toString());
-            formData.append('name', name);
-            formData.append('shop_active', shop_active.toString());
-            formData.append('attributes', JSON.stringify(attributes));
-            formData.append('metadata', JSON.stringify(metadata));
-            formData.append('seo', JSON.stringify(seo));
-            formData.append('availability', JSON.stringify(availability));
+            if (name) formData.append('name', name);
+            if (shop_active) formData.append('shop_active', shop_active.toString());
+            if (attributes) formData.append('attributes', JSON.stringify(attributes));
+            if (metadata) formData.append('metadata', JSON.stringify(metadata));
+            if (seo) formData.append('seo', JSON.stringify(seo));
+            if (availability) formData.append('availability', JSON.stringify(availability));
 
             let updateProduct = await this.instance.post('', formData);
             return updateProduct.data;
@@ -247,13 +289,23 @@ export default class ShopObjects {
      * @public
      */
     public async createVariation(
-        id_product: number,
-        name: string,
-        shop_active: number = 1,
-        attributes: object = {},
-        metadata: object = {},
-        seo: object = {},
-        availability: object = {}
+        {
+            id_product,
+            name,
+            shop_active = 1,
+            attributes = null,
+            metadata = null,
+            seo = null,
+            availability = null
+        }: {
+            id_product: number;
+            name: string;
+            shop_active?: number;
+            attributes?: object | null;
+            metadata?: object | null;
+            seo?: object | null;
+            availability?: object | null;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -264,13 +316,13 @@ export default class ShopObjects {
             formData.append('licence_password', this.licence_password);
             formData.append('licence_secret_key', this.licence_secret_key);
             formData.append('request', "create_variation");
-            formData.append('id_product', id_product.toString());
+            if (id_product) formData.append('id_product', id_product.toString());
             formData.append('name', name);
             formData.append('shop_active', shop_active.toString());
-            formData.append('attributes', JSON.stringify(attributes));
-            formData.append('metadata', JSON.stringify(metadata));
-            formData.append('seo', JSON.stringify(seo));
-            formData.append('availability', JSON.stringify(availability));
+            if (attributes) formData.append('attributes', JSON.stringify(attributes));
+            if (metadata) formData.append('metadata', JSON.stringify(metadata));
+            if (seo) formData.append('seo', JSON.stringify(seo));
+            if (availability) formData.append('availability', JSON.stringify(availability));
 
             let createVariation = await this.instance.post('', formData);
             return createVariation.data;
@@ -287,7 +339,11 @@ export default class ShopObjects {
      * @public
      */
     public async deleteProduct(
-        id_product: number
+        {
+            id_product
+        }: {
+            id_product: number;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -315,7 +371,11 @@ export default class ShopObjects {
      * @public
      */
     public async deleteContent(
-        id_content: number
+        {
+            id_content
+        }: {
+            id_content: number;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -347,11 +407,19 @@ export default class ShopObjects {
      * @public
      */
     public async updateContent(
-        id_content: number,
-        name: string,
-        shop_active: number = 1,
-        attributes: object = {},
-        seo: object = {}
+        {
+            id_content,
+            name = null,
+            shop_active = 1,
+            attributes = null,
+            seo = null
+        }: {
+            id_content: number;
+            name?: string | null;
+            shop_active?: number;
+            attributes?: object | null;
+            seo?: object | null;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -363,10 +431,10 @@ export default class ShopObjects {
             formData.append('licence_secret_key', this.licence_secret_key);
             formData.append('request', "update_content");
             formData.append('id_content', id_content.toString());
-            formData.append('name', name);
+            if (name) formData.append('name', name);
             formData.append('shop_active', shop_active.toString());
-            formData.append('attributes', JSON.stringify(attributes));
-            formData.append('seo', JSON.stringify(seo));
+            if (attributes) formData.append('attributes', JSON.stringify(attributes));
+            if (seo) formData.append('seo', JSON.stringify(seo));
 
             let updateContent = await this.instance.post('', formData);
             return updateContent.data;

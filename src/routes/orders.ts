@@ -52,35 +52,67 @@ export default class Orders {
      * @public
      */
     public async setOrderDetails(
-        session: string,
-        id_payment_method: number,
-        id_delivery_method: number,
-        delivery_companyname: string,
-        delivery_department: string,
-        delivery_salutation: string,
-        delivery_firstname: string,
-        delivery_lastname: string,
-        delivery_street: string,
-        delivery_number: string,
-        delivery_zip: string,
-        delivery_state: string,
-        delivery_city: string,
-        delivery_country: string,
-        invoice_companyname: string,
-        invoice_department: string,
-        invoice_salutation: string,
-        invoice_firstname: string,
-        invoice_lastname: string,
-        invoice_street: string,
-        invoice_number: string,
-        invoice_zip: string,
-        invoice_state: string,
-        invoice_city: string,
-        invoice_country: string,
-        note: string,
-        email: string,
-        phone: string,
-        attributes: Array<object> = []
+        {
+            session,
+            id_payment_method = null,
+            id_delivery_method = null,
+            delivery_companyname = null,
+            delivery_department = null,
+            delivery_salutation = null,
+            delivery_firstname = null,
+            delivery_lastname = null,
+            delivery_street = null,
+            delivery_number = null,
+            delivery_zip = null,
+            delivery_state = null,
+            delivery_city = null,
+            delivery_country = null,
+            invoice_companyname = null,
+            invoice_department = null,
+            invoice_salutation = null,
+            invoice_firstname = null,
+            invoice_lastname = null,
+            invoice_street = null,
+            invoice_number = null,
+            invoice_zip = null,
+            invoice_state = null,
+            invoice_city = null,
+            invoice_country = null,
+            note = null,
+            email = null,
+            phone = null,
+            attributes = null
+        }: {
+            session: string;
+            id_payment_method?: number | null;
+            id_delivery_method?: number | null;
+            delivery_companyname?: string | null;
+            delivery_department?: string | null;
+            delivery_salutation?: string | null;
+            delivery_firstname?: string | null;
+            delivery_lastname?: string | null;
+            delivery_street?: string | null;
+            delivery_number?: string | null;
+            delivery_zip?: string | null;
+            delivery_state?: string | null;
+            delivery_city?: string | null;
+            delivery_country?: string | null;
+            invoice_companyname?: string | null;
+            invoice_department?: string | null;
+            invoice_salutation?: string | null;
+            invoice_firstname?: string | null;
+            invoice_lastname?: string | null;
+            invoice_street?: string | null;
+            invoice_number?: string | null;
+            invoice_zip?: string | null;
+            invoice_state?: string | null;
+            invoice_city?: string | null;
+            invoice_country?: string | null;
+            note?: string | null;
+            email?: string | null;
+            phone?: string | null;
+            attributes?: Array<object> | null;
+        }
     ): Promise<object> {
 
         try {
@@ -89,34 +121,34 @@ export default class Orders {
             formData.append('licence_password', this.licence_password);
             formData.append('request', "set_order_details");
             formData.append('session', session);
-            formData.append('id_payment_method', id_payment_method.toString());
-            formData.append('id_delivery_method', id_delivery_method.toString());
-            formData.append('delivery_companyname', delivery_companyname);
-            formData.append('delivery_department', delivery_department);
-            formData.append('delivery_salutation', delivery_salutation);
-            formData.append('delivery_firstname', delivery_firstname);
-            formData.append('delivery_lastname', delivery_lastname);
-            formData.append('delivery_street', delivery_street);
-            formData.append('delivery_number', delivery_number);
-            formData.append('delivery_zip', delivery_zip);
-            formData.append('delivery_state', delivery_state);
-            formData.append('delivery_city', delivery_city);
-            formData.append('delivery_country', delivery_country);
-            formData.append('invoice_companyname', invoice_companyname);
-            formData.append('invoice_department', invoice_department);
-            formData.append('invoice_salutation', invoice_salutation);
-            formData.append('invoice_firstname', invoice_firstname);
-            formData.append('invoice_lastname', invoice_lastname);
-            formData.append('invoice_street', invoice_street);
-            formData.append('invoice_number', invoice_number);
-            formData.append('invoice_zip', invoice_zip);
-            formData.append('invoice_state', invoice_state);
-            formData.append('invoice_city', invoice_city);
-            formData.append('invoice_country', invoice_country);
-            formData.append('note', note);
-            formData.append('email', email);
-            formData.append('phone', phone);
-            formData.append('attributes', JSON.stringify(attributes));
+            if (id_payment_method) formData.append('id_payment_method', id_payment_method.toString());
+            if (id_delivery_method) formData.append('id_delivery_method', id_delivery_method.toString());
+            if (delivery_companyname) formData.append('delivery_companyname', delivery_companyname);
+            if (delivery_department) formData.append('delivery_department', delivery_department);
+            if (delivery_salutation) formData.append('delivery_salutation', delivery_salutation);
+            if (delivery_firstname) formData.append('delivery_firstname', delivery_firstname);
+            if (delivery_lastname) formData.append('delivery_lastname', delivery_lastname);
+            if (delivery_street) formData.append('delivery_street', delivery_street);
+            if (delivery_number) formData.append('delivery_number', delivery_number);
+            if (delivery_zip) formData.append('delivery_zip', delivery_zip);
+            if (delivery_state) formData.append('delivery_state', delivery_state);
+            if (delivery_city) formData.append('delivery_city', delivery_city);
+            if (delivery_country) formData.append('delivery_country', delivery_country);
+            if (invoice_companyname) formData.append('invoice_companyname', invoice_companyname);
+            if (invoice_department) formData.append('invoice_department', invoice_department);
+            if (invoice_salutation) formData.append('invoice_salutation', invoice_salutation);
+            if (invoice_firstname) formData.append('invoice_firstname', invoice_firstname);
+            if (invoice_lastname) formData.append('invoice_lastname', invoice_lastname);
+            if (invoice_street) formData.append('invoice_street', invoice_street);
+            if (invoice_number) formData.append('invoice_number', invoice_number);
+            if (invoice_zip) formData.append('invoice_zip', invoice_zip);
+            if (invoice_state) formData.append('invoice_state', invoice_state);
+            if (invoice_city) formData.append('invoice_city', invoice_city);
+            if (invoice_country) formData.append('invoice_country', invoice_country);
+            if (note) formData.append('note', note);
+            if (email) formData.append('email', email);
+            if (phone) formData.append('phone', phone);
+            if (attributes) formData.append('attributes', JSON.stringify(attributes));
 
             let setOrderDetails = await this.instance.post('', formData);
             return setOrderDetails.data;
@@ -187,38 +219,73 @@ export default class Orders {
      * @public
      */
     public async updateOrderDetails(
-        id_order: number,
-        id_payment_method: number,
-        id_delivery_method: number,
-        order_state: string,
-        order_payment_state: string,
-        order_delivery_state: string,
-        delivery_companyname: string,
-        delivery_department: string,
-        delivery_salutation: string,
-        delivery_firstname: string,
-        delivery_lastname: string,
-        delivery_street: string,
-        delivery_number: string,
-        delivery_zip: string,
-        delivery_state: string,
-        delivery_city: string,
-        delivery_country: string,
-        invoice_companyname: string,
-        invoice_department: string,
-        invoice_salutation: string,
-        invoice_firstname: string,
-        invoice_lastname: string,
-        invoice_street: string,
-        invoice_number: string,
-        invoice_zip: string,
-        invoice_state: string,
-        invoice_city: string,
-        invoice_country: string,
-        note: string,
-        email: string,
-        phone: string,
-        attributes: Array<object> = []
+        {
+            id_order,
+            id_payment_method = null,
+            id_delivery_method = null,
+            order_state = null,
+            order_payment_state = null,
+            order_delivery_state = null,
+            delivery_companyname = null,
+            delivery_department = null,
+            delivery_salutation = null,
+            delivery_firstname = null,
+            delivery_lastname = null,
+            delivery_street = null,
+            delivery_number = null,
+            delivery_zip = null,
+            delivery_state = null,
+            delivery_city = null,
+            delivery_country = null,
+            invoice_companyname = null,
+            invoice_department = null,
+            invoice_salutation = null,
+            invoice_firstname = null,
+            invoice_lastname = null,
+            invoice_street = null,
+            invoice_number = null,
+            invoice_zip = null,
+            invoice_state = null,
+            invoice_city = null,
+            invoice_country = null,
+            note = null,
+            email = null,
+            phone = null,
+            attributes = null
+        }: {
+            id_order: number;
+            id_payment_method: number | null;
+            id_delivery_method: number | null;
+            order_state: string | null;
+            order_payment_state: string | null;
+            order_delivery_state: string | null;
+            delivery_companyname: string | null;
+            delivery_department: string | null;
+            delivery_salutation: string | null;
+            delivery_firstname: string | null;
+            delivery_lastname: string | null;
+            delivery_street: string | null;
+            delivery_number: string | null;
+            delivery_zip: string | null;
+            delivery_state: string | null;
+            delivery_city: string | null;
+            delivery_country: string | null;
+            invoice_companyname: string | null;
+            invoice_department: string | null;
+            invoice_salutation: string | null;
+            invoice_firstname: string | null;
+            invoice_lastname: string | null;
+            invoice_street: string | null;
+            invoice_number: string | null;
+            invoice_zip: string | null;
+            invoice_state: string | null;
+            invoice_city: string | null;
+            invoice_country: string | null;
+            note: string | null;
+            email: string | null;
+            phone: string | null;
+            attributes?: Array<object> | null;
+        }
     ): Promise<object> {
 
         try {
@@ -227,37 +294,38 @@ export default class Orders {
             formData.append('licence_password', this.licence_password);
             formData.append('request', "update_order_details");
             formData.append('id_order', id_order.toString());
-            formData.append('id_payment_method', id_payment_method.toString());
-            formData.append('id_delivery_method', id_delivery_method.toString());
-            formData.append('order_state', order_state);
-            formData.append('order_payment_state', order_payment_state);
-            formData.append('order_delivery_state', order_delivery_state);
-            formData.append('delivery_companyname', delivery_companyname);
-            formData.append('delivery_department', delivery_department);
-            formData.append('delivery_salutation', delivery_salutation);
-            formData.append('delivery_firstname', delivery_firstname);
-            formData.append('delivery_lastname', delivery_lastname);
-            formData.append('delivery_street', delivery_street);
-            formData.append('delivery_number', delivery_number);
-            formData.append('delivery_zip', delivery_zip);
-            formData.append('delivery_state', delivery_state);
-            formData.append('delivery_city', delivery_city);
-            formData.append('delivery_country', delivery_country);
-            formData.append('invoice_companyname', invoice_companyname);
-            formData.append('invoice_department', invoice_department);
-            formData.append('invoice_salutation', invoice_salutation);
-            formData.append('invoice_firstname', invoice_firstname);
-            formData.append('invoice_lastname', invoice_lastname);
-            formData.append('invoice_street', invoice_street);
-            formData.append('invoice_number', invoice_number);
-            formData.append('invoice_zip', invoice_zip);
-            formData.append('invoice_state', invoice_state);
-            formData.append('invoice_city', invoice_city);
-            formData.append('invoice_country', invoice_country);
-            formData.append('note', note);
-            formData.append('email', email);
-            formData.append('phone', phone);
-            formData.append('attributes', JSON.stringify(attributes));
+            if (id_payment_method) formData.append('id_payment_method', id_payment_method.toString());
+            if (id_delivery_method) formData.append('id_delivery_method', id_delivery_method.toString());
+            if (order_state) formData.append('order_state', order_state);
+            if (order_payment_state) formData.append('order_payment_state', order_payment_state);
+            if (order_delivery_state) formData.append('order_delivery_state', order_delivery_state);
+            if (delivery_companyname) formData.append('delivery_companyname', delivery_companyname);
+            if (delivery_department) formData.append('delivery_department', delivery_department);
+            if (delivery_salutation) formData.append('delivery_salutation', delivery_salutation);
+            if (delivery_firstname) formData.append('delivery_firstname', delivery_firstname);
+            if (delivery_lastname) formData.append('delivery_lastname', delivery_lastname);
+            if (delivery_street) formData.append('delivery_street', delivery_street);
+            if (delivery_number) formData.append('delivery_number', delivery_number);
+            if (delivery_zip) formData.append('delivery_zip', delivery_zip);
+            if (delivery_state) formData.append('delivery_state', delivery_state);
+            if (delivery_city) formData.append('delivery_city', delivery_city);
+            if (delivery_country) formData.append('delivery_country', delivery_country);
+            if (invoice_companyname) formData.append('invoice_companyname', invoice_companyname);
+            if (invoice_department) formData.append('invoice_department', invoice_department);
+            if (invoice_salutation) formData.append('invoice_salutation', invoice_salutation);
+            if (invoice_firstname) formData.append('invoice_firstname', invoice_firstname);
+            if (invoice_lastname) formData.append('invoice_lastname', invoice_lastname);
+            if (invoice_street) formData.append('invoice_street', invoice_street);
+            if (invoice_number) formData.append('invoice_number', invoice_number);
+            if (invoice_zip) formData.append('invoice_zip', invoice_zip);
+            if (invoice_state) formData.append('invoice_state', invoice_state);
+            if (invoice_city) formData.append('invoice_city', invoice_city);
+            if (invoice_country) formData.append('invoice_country', invoice_country);
+            if (note) formData.append('note', note);
+            if (email) formData.append('email', email);
+            if (phone) formData.append('phone', phone);
+            if (attributes) formData.append('attributes', JSON.stringify(attributes));
+
 
             let updateOrderDetails = await this.instance.post('', formData);
             return updateOrderDetails.data;
@@ -275,7 +343,11 @@ export default class Orders {
      * @public
      */
     public async getOrderDetails(
-        session: string
+        {
+            session
+        }: {
+            session: string;
+        }
     ): Promise<object> {
 
         try {
@@ -302,8 +374,13 @@ export default class Orders {
      * @public
      */
     public async getOrderById(
-        id_order: number,
-        language: string = this.default_language
+        {
+            id_order,
+            language = this.default_language
+        }: {
+            id_order: number;
+            language?: string;
+        }
     ): Promise<object> {
 
         try {
@@ -330,7 +407,11 @@ export default class Orders {
      * @public
      */
     public async checkout(
-        session: string
+        {
+            session
+        }: {
+            session: string;
+        }
     ): Promise<object> {
 
         try {
@@ -357,7 +438,11 @@ export default class Orders {
      */
 
     public async getInvoice(
-        id_order: number
+        {
+            id_order
+        }: {
+            id_order: number;
+        }
     ): Promise<object> {
 
         try {
@@ -384,8 +469,13 @@ export default class Orders {
      * @public
      */
     public async getOrderConfirmation(
-        id_order: number,
-        args: object = {}
+        {
+            id_order,
+            args = {}
+        }: {
+            id_order: number;
+            args?: object;
+        }
     ): Promise<object> {
 
         try {

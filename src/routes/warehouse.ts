@@ -30,11 +30,19 @@ export default class Warehouse {
      * @return {Object} Object of created warehouse entity.
      */
     public async createWarehouseEntity(
-        class_: string,
-        name: string,
-        id_manufacturer: number,
-        attributes: object,
-        metadata: object
+        {
+            class_,
+            name,
+            id_manufacturer,
+            attributes,
+            metadata
+        }: {
+            class_: string;
+            name: string;
+            id_manufacturer: number;
+            attributes: object;
+            metadata: object;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -70,11 +78,19 @@ export default class Warehouse {
      * @return {Object} Object of updated warehouse entity.
      */
     public async updateWarehouseEntity(
-        id_warehouse_entity: number,
-        name: string,
-        id_manufacturer: number,
-        attributes: object,
-        metadata: object
+        {
+            id_warehouse_entity,
+            name,
+            id_manufacturer,
+            attributes,
+            metadata
+        }: {
+            id_warehouse_entity: number;
+            name: string;
+            id_manufacturer: number;
+            attributes: object;
+            metadata: object;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -106,7 +122,11 @@ export default class Warehouse {
      * @return {Object} Object of deleted warehouse entity.
      */
     public async deleteWarehouseEntity(
-        id_warehouse_entity: number
+        {
+            id_warehouse_entity
+        }: {
+            id_warehouse_entity: number;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -137,10 +157,17 @@ export default class Warehouse {
      * @return {Object} Object of inventory place.
      */
     public async inventoryPlace(
-        storage: string,
-        element_number: string,
-        quantity: number,
-        note: string
+        {
+            storage,
+            element_number,
+            quantity,
+            note
+        }: {
+            storage: string;
+            element_number: string;
+            quantity: number;
+            note: string;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -174,10 +201,17 @@ export default class Warehouse {
      * @return {Object} Object of inventory take.
      */
     public async inventoryTake(
-        storage: string,
-        element_number: string,
-        quantity: number,
-        note: string
+        {
+            storage,
+            element_number,
+            quantity,
+            note
+        }: {
+            storage: string;
+            element_number: string;
+            quantity: number;
+            note: string;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -210,9 +244,15 @@ export default class Warehouse {
      * @return {Object} Object of added binding.
      */
     public async addBinding(
-        id_product: number,
-        element_number: string,
-        quantity: number = 1
+        {
+            id_product,
+            element_number,
+            quantity = 1
+        }: {
+            id_product: number;
+            element_number: string;
+            quantity?: number;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -243,8 +283,14 @@ export default class Warehouse {
      * @return {Object} Object of deleted binding.
      */
     public async deleteBinding(
-        id_product: number,
-        element_number: string
+        {
+            id_product,
+            element_number
+        }:
+        {
+            id_product: number,
+            element_number: string
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);

@@ -35,8 +35,14 @@ export default class Categories {
      * @public
      */
     public async getCategories(
-        id_parent: number,
-        language: string = this.default_language,
+        {
+            id_parent,
+            language = this.default_language,
+        }:
+        {
+            id_parent: number,
+            language?: string,
+        }
     ): Promise<ICategories | object> {
 
         try {
@@ -70,14 +76,26 @@ export default class Categories {
      * @public
      */
     public async getProductsInCategory(
-        id_category: number,
-        language: string = this.default_language,
-        country: string = 'DE',
-        order_columns: Array<string> = [],
-        order: string = 'ASC',
-        left_limit: number = 0,
-        right_limit: number = 0,
-        needed_attributes: Array<string> = [],
+        {
+            id_category,
+            language = this.default_language,
+            country = 'DE',
+            order_columns = [],
+            order = 'ASC',
+            left_limit = 0,
+            right_limit = 0,
+            needed_attributes = []
+        }:
+        {
+            id_category: number,
+            language?: string,
+            country?: string,
+            order_columns?: Array<string>,
+            order?: string,
+            left_limit?: number,
+            right_limit?: number,
+            needed_attributes?: Array<string>
+        }
     ): Promise<IProductsInCategory | object> {
 
         try {
@@ -119,13 +137,24 @@ export default class Categories {
      * @public
      */
     public async getContentsInCategory(
-        id_category: number,
-        language: string = this.default_language,
-        order_columns: Array<string> = [],
-        order: string = 'ASC',
-        left_limit: number = 0,
-        right_limit: number = 0,
-        needed_attributes: Array<string> = [],
+        {
+            id_category,
+            language = this.default_language,
+            order_columns = [],
+            order = 'ASC',
+            left_limit = 0,
+            right_limit = 0,
+            needed_attributes = [],
+        }:
+        {
+            id_category: number,
+            language?: string,
+            order_columns?: Array<string>,
+            order?: string,
+            left_limit?: number,
+            right_limit?: number,
+            needed_attributes?: Array<string>
+        }
     ): Promise<IContentsInCategory | object> {
 
         try {
@@ -165,14 +194,25 @@ export default class Categories {
      * @public
      */
     public async getShopobjectsInCategory(
-        id_category: number,
-        language: string = this.default_language,
-        country: string = 'DE',
-        order_columns: Array<string> = [],
-        order: string = 'ASC',
-        left_limit: number = 0,
-        right_limit: number = 0,
-        needed_attributes: Array<string> = [],
+        {
+            id_category,
+            language = this.default_language,
+            country = 'DE',
+            order_columns = [],
+            order = 'ASC',
+            left_limit = 0,
+            right_limit = 0,
+            needed_attributes = [],
+        }: {
+            id_category: number,
+            language?: string,
+            country?: string,
+            order_columns?: Array<string>,
+            order?: string,
+            left_limit?: number,
+            right_limit?: number,
+            needed_attributes?: Array<string>,
+        }
     ): Promise<IShopobjectsInCategory | object> {
 
         try {
@@ -213,15 +253,27 @@ export default class Categories {
      * @public
      */
     public async dumpCategory(
-        id_category: number,
-        language: string = 'de_DE',
-        country: string = 'DE',
-        order_columns: Array<string> = ['prio'],
-        order: string = 'ASC',
-        left_limit: number = 0,
-        right_limit: number = 0,
-        depth: number = 0,
-        needed_attributes: Array<string> = [],
+        {
+            id_category,
+            language = 'de_DE',
+            country = 'DE',
+            order_columns = ['prio'],
+            order = 'ASC',
+            left_limit = 0,
+            right_limit = 0,
+            depth = 0,
+            needed_attributes = [],
+        }: {
+            id_category: number,
+            language?: string,
+            country?: string,
+            order_columns?: Array<string>,
+            order?: string,
+            left_limit?: number,
+            right_limit?: number,
+            depth?: number,
+            needed_attributes?: Array<string>,
+        }
     ): Promise<IDumpCategory | object> {
 
         try {
@@ -263,14 +315,26 @@ export default class Categories {
      * @public
      */
     public async seoGetProductsInCategory(
-        permalink: string,
-        language: string = this.default_language,
-        country: string = 'DE',
-        order_columns: Array<string> = [],
-        order: string = 'ASC',
-        left_limit: number = 0,
-        right_limit: number = 0,
-        needed_attributes: Array<string> = [],
+        {
+            permalink,
+            language = this.default_language,
+            country = 'DE',
+            order_columns = [],
+            order = 'ASC',
+            left_limit = 0,
+            right_limit = 0,
+            needed_attributes = [],
+        }:
+        {
+            permalink: string,
+            language?: string,
+            country?: string,
+            order_columns?: Array<string>,
+            order?: string,
+            left_limit?: number,
+            right_limit?: number,
+            needed_attributes?: Array<string>,
+        }
     ): Promise<object> {
 
         try {
@@ -309,12 +373,22 @@ export default class Categories {
      * @public
      */
     public async seoGetContentsInCategory(
-        permalink: string,
-        order_columns: Array<string> = [],
-        order: string = 'ASC',
-        left_limit: number = 0,
-        right_limit: number = 0,
-        needed_attributes: Array<string> = [],
+        {
+            permalink,
+            order_columns = [],
+            order = 'ASC',
+            left_limit = 0,
+            right_limit = 0,
+            needed_attributes = [],
+        }:
+        {
+            permalink: string,
+            order_columns?: Array<string>,
+            order?: string,
+            left_limit?: number,
+            right_limit?: number,
+            needed_attributes?: Array<string>,
+        }
     ): Promise<object> {
 
         try {
@@ -351,12 +425,22 @@ export default class Categories {
      * @public
      */
     public async seoGetShopobjectsInCategory(
-        permalink: string,
-        order_columns: Array<string> = [],
-        order: string = 'ASC',
-        left_limit: number = 0,
-        right_limit: number = 0,
-        needed_attributes: Array<string> = [],
+        {
+            permalink,
+            order_columns = [],
+            order = 'ASC',
+            left_limit = 0,
+            right_limit = 0,
+            needed_attributes = [],
+        }:
+        {
+            permalink: string,
+            order_columns?: Array<string>,
+            order?: string,
+            left_limit?: number,
+            right_limit?: number,
+            needed_attributes?: Array<string>,
+        }
     ): Promise<object> {
 
         try {
@@ -391,10 +475,18 @@ export default class Categories {
      * @public
      */
     public async createCategory(
-        id_parent: number,
-        name: string,
-        labels: object = {},
-        seo: object = {},
+        {
+            id_parent,
+            name,
+            labels = {},
+            seo = {},
+        }:
+        {
+            id_parent: number,
+            name: string,
+            labels?: object,
+            seo?: object,
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -431,11 +523,20 @@ export default class Categories {
      * @public
      */
     public async updateCategory(
-        id_parent: number,
-        name: string,
-        labels: object = {},
-        attributes: object = {},
-        seo: object = {},
+        {
+            id_parent,
+            name,
+            labels = null,
+            attributes = null,
+            seo = null,
+        }:
+        {
+            id_parent: number,
+            name: string,
+            labels?: object | null,
+            attributes?: object | null,
+            seo?: object | null,
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
@@ -448,9 +549,9 @@ export default class Categories {
             formData.append('request', 'update_category');
             formData.append('id_parent', id_parent.toString());
             formData.append('name', name);
-            formData.append('labels', JSON.stringify(labels));
-            formData.append('attributes', JSON.stringify(attributes));
-            formData.append('seo', JSON.stringify(seo));
+            if (labels) formData.append('labels', JSON.stringify(labels));
+            if (attributes) formData.append('attributes', JSON.stringify(attributes));
+            if (seo) formData.append('seo', JSON.stringify(seo));
 
             let updateCategory = await this.instance.post('', formData);
             return updateCategory.data;
@@ -469,7 +570,7 @@ export default class Categories {
      * @public
      */
     public async deleteCategory(
-        id_category: number,
+        {id_category}: { id_category: number, }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);

@@ -49,10 +49,17 @@ export default class Server {
      * @return {Object} Object of created channel.
      */
     public async createChannel(
-        name: string,
-        description: string,
-        shop_active: number,
-        server_output: string = 'json'
+        {
+            name,
+            description,
+            shop_active,
+            server_output = 'json'
+        }: {
+            name: string;
+            description: string;
+            shop_active: number;
+            server_output?: string;
+        }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);

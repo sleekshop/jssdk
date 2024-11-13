@@ -47,8 +47,13 @@ export default class Payment {
      * @public
      */
     public async doPayment(
-        id_order: number,
-        args: Array<any> = []
+        {
+            id_order,
+            args = []
+        }: {
+            id_order: number;
+            args?: Array<any>;
+        }
     ): Promise<object> {
 
         try {
@@ -76,8 +81,13 @@ export default class Payment {
      * @public
      */
     public async addDeliveryCosts(
-        session: string,
-        delivery_costs: Array<any> = []
+        {
+            session,
+            delivery_costs = []
+        }: {
+            session: string;
+            delivery_costs?: Array<any>;
+        }
     ): Promise<object> {
 
         try {

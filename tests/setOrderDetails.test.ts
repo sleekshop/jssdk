@@ -1,7 +1,7 @@
 import Sleekshop from "../src";
 
-describe("deleteProduct", () => {
-    it("should delete product", async () => {
+describe("registerUser", () => {
+    it("should fail to register a user", async () => {
 
         const sleekshop = new Sleekshop(
             "https://yourinstance.sleekshop.net/srv/service/", // Sleekshop API URL
@@ -9,13 +9,15 @@ describe("deleteProduct", () => {
             "jYkL7fPmQw2eVtNgHs3S", // licence password
             "jYkL7fPmQw2eVtNgHs3S" // optional licence secret key - required for some API calls
         );
-        const deleteProduct = await sleekshop.shopObjects.deleteProduct(
+
+        const session = await sleekshop.orders.setOrderDetails(
             {
-                id_product: 1234
+                session: '',
+                attributes: null
             }
         );
-        console.log(deleteProduct);
+        console.log(session);
 
-        expect(deleteProduct);
+        expect(session).toHaveProperty("object", "session");
     });
 });
