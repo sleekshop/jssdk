@@ -13,7 +13,7 @@ export default class User {
         this.licence_username = parentObj.licence_username;
         this.licence_password = parentObj.licence_password;
         this.instance = parentObj.instance;
-        this.default_language = parentObj.default_language;
+        this.default_language = parentObj.default_language || "de_DE";
     }
 
     /**
@@ -35,7 +35,7 @@ export default class User {
             passwd1,
             passwd2,
             email,
-            language = this.default_language,
+            language = null,
             class_ = "user"
         }:
         {
@@ -43,12 +43,13 @@ export default class User {
             passwd1: string,
             passwd2: string,
             email: string,
-            language?: string
+            language?: string | null;
             class_?: string
         }
     ): Promise<object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);

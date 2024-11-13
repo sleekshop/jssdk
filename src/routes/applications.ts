@@ -13,7 +13,7 @@ export default class Applications {
         this.licence_username = parentObj.licence_username;
         this.licence_password = parentObj.licence_password;
         this.instance = parentObj.instance;
-        this.default_language = parentObj.default_language;
+        this.default_language = parentObj.default_language || "de_DE";
     }
 
     /**

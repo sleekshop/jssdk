@@ -32,18 +32,20 @@ export default class ShopObjects {
     public async getProductDetails(
         {
             id_product,
-            language = this.default_language,
+            language = null,
             country = "DE",
             needed_attributes = []
         }: {
             id_product: number;
-            language?: string;
+            language?: string | null;
             country?: string;
             needed_attributes?: Array<string>;
         }
     ): Promise<object> {
 
         try {
+            language = language ?? this.default_language;
+
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
@@ -72,14 +74,15 @@ export default class ShopObjects {
     public async getContentDetails(
         {
             id_content,
-            language = this.default_language
+            language = null,
         }: {
             id_content: number;
-            language?: string;
+            language?: string | null;
         }
     ): Promise<object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);

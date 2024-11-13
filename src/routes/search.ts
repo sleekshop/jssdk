@@ -16,7 +16,7 @@ export default class Search {
         this.licence_password = parentObj.licence_password;
         this.licence_secret_key = parentObj.licence_secret_key;
         this.instance = parentObj.instance;
-        this.default_language = parentObj.default_language;
+        this.default_language = parentObj.default_language || "de_DE";
     }
 
     /**
@@ -36,7 +36,7 @@ export default class Search {
     public async searchProducts(
         {
             constraint = {},
-            language = this.default_language,
+            language = null,
             country = "DE",
             order_columns = [],
             order_type = "ASC",
@@ -45,7 +45,7 @@ export default class Search {
             needed_attributes = []
         }: {
             constraint?: object;
-            language?: string;
+            language?: string | null;
             country?: string;
             order_columns?: Array<string>;
             order_type?: string;
@@ -56,6 +56,7 @@ export default class Search {
     ): Promise<object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
@@ -93,7 +94,7 @@ export default class Search {
     public async searchContents(
         {
             constraint = {},
-            language = this.default_language,
+            language = null,
             order_columns = [],
             order_type = "ASC",
             left_limit = 0,
@@ -101,7 +102,7 @@ export default class Search {
             needed_attributes = []
         }: {
             constraint?: object;
-            language?: string;
+            language?: string | null;
             order_columns?: Array<string>;
             order_type?: string;
             left_limit?: number;
@@ -111,6 +112,7 @@ export default class Search {
     ): Promise<object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
@@ -144,15 +146,16 @@ export default class Search {
         {
             field,
             constraint = {},
-            language = this.default_language
+            language = null,
         }: {
             field: string;
             constraint?: object;
-            language?: string;
+            language?: string | null;
         }
     ): Promise<object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
@@ -182,18 +185,19 @@ export default class Search {
     public async searchOrders(
         {
             constraint = {},
-            language = this.default_language,
+            language = null,
             left_limit = 0,
             right_limit = 0
         }: {
             constraint?: object;
-            language?: string;
+            language?: string | null;
             left_limit?: number;
             right_limit?: number;
         }
     ): Promise<object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
@@ -275,7 +279,7 @@ export default class Search {
     public async searchWarehouseEntities(
         {
             constraint = {},
-            language = this.default_language,
+            language = null,
             order_columns = [],
             order_type = "",
             left_limit = 0,
@@ -283,7 +287,7 @@ export default class Search {
             needed_attributes = []
         }: {
             constraint?: object;
-            language?: string;
+            language?: string | null;
             order_columns?: Array<string>;
             order_type?: string;
             left_limit?: number;
@@ -295,6 +299,7 @@ export default class Search {
         checkSecretKey(this.licence_secret_key);
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);

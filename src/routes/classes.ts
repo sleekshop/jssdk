@@ -16,7 +16,7 @@ export default class Classes {
         this.licence_password = parentObj.licence_password;
         this.licence_secret_key = parentObj.licence_secret_key;
         this.instance = parentObj.instance;
-        this.default_language = parentObj.default_language;
+        this.default_language = parentObj.default_language || "de_DE";
     }
 
     /**
@@ -30,17 +30,18 @@ export default class Classes {
     public async getClassDetails(
         {
             id_class,
-            language = this.default_language,
+            language = null,
         }:
         {
             id_class: number,
-            language: string,
+            language?: string | null;
         }
     ): Promise<object> {
 
         checkSecretKey(this.licence_secret_key);
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);

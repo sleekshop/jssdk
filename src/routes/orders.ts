@@ -13,7 +13,7 @@ export default class Orders {
         this.licence_username = parentObj.licence_username;
         this.licence_password = parentObj.licence_password;
         this.instance = parentObj.instance;
-        this.default_language = parentObj.default_language;
+        this.default_language = parentObj.default_language || "de_DE";
     }
 
     /**
@@ -376,14 +376,15 @@ export default class Orders {
     public async getOrderById(
         {
             id_order,
-            language = this.default_language
+            language = null,
         }: {
             id_order: number;
-            language?: string;
+            language?: string | null;
         }
     ): Promise<object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);

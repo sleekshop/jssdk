@@ -6,14 +6,12 @@ export default class Payment {
 
     protected licence_username: string;
     protected licence_password: string;
-    protected default_language: string;
     protected instance: XiorInstance;
 
     constructor(parentObj: Sleekshop) {
         this.licence_username = parentObj.licence_username;
         this.licence_password = parentObj.licence_password;
         this.instance = parentObj.instance;
-        this.default_language = parentObj.default_language;
     }
 
     /**

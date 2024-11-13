@@ -23,7 +23,7 @@ export default class Categories {
         this.licence_password = parentObj.licence_password;
         this.licence_secret_key = parentObj.licence_secret_key;
         this.instance = parentObj.instance;
-        this.default_language = parentObj.default_language;
+        this.default_language = parentObj.default_language || "de_DE";
     }
 
     /**
@@ -37,15 +37,16 @@ export default class Categories {
     public async getCategories(
         {
             id_parent,
-            language = this.default_language,
+            language = null,
         }:
         {
             id_parent: number,
-            language?: string,
+            language?: string | null;
         }
     ): Promise<ICategories | object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
@@ -78,7 +79,7 @@ export default class Categories {
     public async getProductsInCategory(
         {
             id_category,
-            language = this.default_language,
+            language = null,
             country = 'DE',
             order_columns = [],
             order = 'ASC',
@@ -88,7 +89,7 @@ export default class Categories {
         }:
         {
             id_category: number,
-            language?: string,
+            language?: string | null;
             country?: string,
             order_columns?: Array<string>,
             order?: string,
@@ -99,7 +100,7 @@ export default class Categories {
     ): Promise<IProductsInCategory | object> {
 
         try {
-
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
@@ -139,7 +140,7 @@ export default class Categories {
     public async getContentsInCategory(
         {
             id_category,
-            language = this.default_language,
+            language = null,
             order_columns = [],
             order = 'ASC',
             left_limit = 0,
@@ -148,7 +149,7 @@ export default class Categories {
         }:
         {
             id_category: number,
-            language?: string,
+            language?: string | null;
             order_columns?: Array<string>,
             order?: string,
             left_limit?: number,
@@ -158,6 +159,7 @@ export default class Categories {
     ): Promise<IContentsInCategory | object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
@@ -196,7 +198,7 @@ export default class Categories {
     public async getShopobjectsInCategory(
         {
             id_category,
-            language = this.default_language,
+            language = null,
             country = 'DE',
             order_columns = [],
             order = 'ASC',
@@ -205,7 +207,7 @@ export default class Categories {
             needed_attributes = [],
         }: {
             id_category: number,
-            language?: string,
+            language?: string | null;
             country?: string,
             order_columns?: Array<string>,
             order?: string,
@@ -216,6 +218,7 @@ export default class Categories {
     ): Promise<IShopobjectsInCategory | object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
@@ -255,7 +258,7 @@ export default class Categories {
     public async dumpCategory(
         {
             id_category,
-            language = 'de_DE',
+            language = null,
             country = 'DE',
             order_columns = ['prio'],
             order = 'ASC',
@@ -265,7 +268,7 @@ export default class Categories {
             needed_attributes = [],
         }: {
             id_category: number,
-            language?: string,
+            language?: string | null;
             country?: string,
             order_columns?: Array<string>,
             order?: string,
@@ -277,6 +280,7 @@ export default class Categories {
     ): Promise<IDumpCategory | object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
@@ -317,7 +321,7 @@ export default class Categories {
     public async seoGetProductsInCategory(
         {
             permalink,
-            language = this.default_language,
+            language = null,
             country = 'DE',
             order_columns = [],
             order = 'ASC',
@@ -327,7 +331,7 @@ export default class Categories {
         }:
         {
             permalink: string,
-            language?: string,
+            language?: string | null;
             country?: string,
             order_columns?: Array<string>,
             order?: string,
@@ -338,6 +342,7 @@ export default class Categories {
     ): Promise<object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);

@@ -13,7 +13,7 @@ export default class Cart {
         this.licence_username = parentObj.licence_username;
         this.licence_password = parentObj.licence_password;
         this.instance = parentObj.instance;
-        this.default_language = parentObj.default_language;
+        this.default_language = parentObj.default_language || "de_DE";
     }
 
     /**
@@ -42,7 +42,7 @@ export default class Cart {
             price_field = "price",
             name_field = "name",
             description_field = "short_description",
-            language = this.default_language,
+            language = null,
             country = "DE"
         }:
         {
@@ -54,12 +54,13 @@ export default class Cart {
             price_field?: string,
             name_field?: string,
             description_field?: string,
-            language?: string,
+            language?: string | null;
             country?: string
         }
     ): Promise<object> {
 
         try {
+            language = language ?? this.default_language;
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
