@@ -249,6 +249,7 @@ export default class Search {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
             formData.append('request', "search_users");
             formData.append('constraint', JSON.stringify(constraint));
             formData.append('order_columns', JSON.stringify(order_columns));

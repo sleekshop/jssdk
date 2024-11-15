@@ -6,12 +6,14 @@ export default class User {
 
     protected licence_username: string;
     protected licence_password: string;
+    protected licence_secret_key: string;
     protected default_language: string;
     protected instance: XiorInstance;
 
     constructor(parentObj: Sleekshop) {
         this.licence_username = parentObj.licence_username;
         this.licence_password = parentObj.licence_password;
+        this.licence_secret_key = parentObj.licence_secret_key;
         this.instance = parentObj.instance;
         this.default_language = parentObj.default_language || "de_DE";
     }
@@ -422,6 +424,7 @@ export default class User {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
             formData.append('request', "update_user_data");
             formData.append('id_user', id_user.toString());
             formData.append('attributes', JSON.stringify(attributes));
