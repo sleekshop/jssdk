@@ -29,6 +29,7 @@ export default class Cart {
      * @param {String} description_field
      * @param {String} language
      * @param {String} country
+     * @param attributes
      * @return {Object} Object of product details.
      * @public
      */
@@ -43,7 +44,8 @@ export default class Cart {
             name_field = "name",
             description_field = "short_description",
             language = null,
-            country = "DE"
+            country = "DE",
+            attributes = []
         }:
         {
             session: string,
@@ -55,7 +57,8 @@ export default class Cart {
             name_field?: string,
             description_field?: string,
             language?: string | null;
-            country?: string
+            country?: string,
+            attributes?: Array<object>
         }
     ): Promise<object> {
 
@@ -75,6 +78,7 @@ export default class Cart {
             formData.append('description_field', description_field);
             formData.append('language', language);
             formData.append('country', country);
+            formData.append('attributes', attributes.toString());
 
             let addToCart = await this.instance.post('', formData);
             return addToCart.data;
