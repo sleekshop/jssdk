@@ -78,7 +78,7 @@ export default class Cart {
             formData.append('description_field', description_field);
             formData.append('language', language);
             formData.append('country', country);
-            formData.append('attributes', attributes.toString());
+            formData.append('attributes', JSON.stringify(attributes));
 
             let addToCart = await this.instance.post('', formData);
             return addToCart.data;

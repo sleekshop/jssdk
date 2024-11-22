@@ -11,7 +11,6 @@ describe("getNewSession", () => {
         );
 
         const session = await sleekshop.sessions.getNewSession();
-        console.log(session);
 
         expect(session).toHaveProperty("object", "session");
     });

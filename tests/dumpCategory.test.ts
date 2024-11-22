@@ -12,7 +12,6 @@ describe("dumpCategory", () => {
         const dumpCategory = await sleekshop.categories.dumpCategory({
             id_category: 191111
         });
-        console.log(dumpCategory);
 
         expect(dumpCategory).toHaveProperty("object", "category_dump");
     });

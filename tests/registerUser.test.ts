@@ -1,7 +1,7 @@
 import Sleekshop from "../src";
 
 describe("registerUser", () => {
-    it("should fail to register a user", async () => {
+    it("should register a user", async () => {
 
         const sleekshop = new Sleekshop(
             "https://yourinstance.sleekshop.net/srv/service/", // Sleekshop API URL
