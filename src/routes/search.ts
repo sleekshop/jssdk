@@ -179,6 +179,9 @@ export default class Search {
      * @param {String} language
      * @param {Number} left_limit
      * @param {Number} right_limit
+     * @param {Array} order_columns
+     * @param {String} order_type
+     * @param {Array} needed_attributes
      * @return {Object} Object of order details.
      * @public
      */
@@ -187,12 +190,18 @@ export default class Search {
             constraint = {},
             language = null,
             left_limit = 0,
-            right_limit = 0
+            right_limit = 0,
+            order_columns = [],
+            order_type = "ASC",
+            needed_attributes = []
         }: {
             constraint?: object;
             language?: string | null;
             left_limit?: number;
             right_limit?: number;
+            order_columns?: Array<any>;
+            order_type?: string;
+            needed_attributes?: Array<string>;
         }
     ): Promise<object> {
 
@@ -206,6 +215,9 @@ export default class Search {
             formData.append('language', language);
             formData.append('left_limit', left_limit.toString());
             formData.append('right_limit', right_limit.toString());
+            formData.append('order_columns', JSON.stringify(order_columns));
+            formData.append('order_type', order_type);
+            formData.append('needed_attributes', JSON.stringify(needed_attributes));
 
             let searchOrders = await this.instance.post('', formData);
             return searchOrders.data;
