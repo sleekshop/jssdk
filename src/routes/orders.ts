@@ -13,7 +13,7 @@ export default class Orders {
     constructor(parentObj: Sleekshop) {
         this.licence_username = parentObj.licence_username;
         this.licence_password = parentObj.licence_password;
-        this.licence_password = parentObj.licence_secret_key;
+        this.licence_secret_key = parentObj.licence_secret_key;
         this.instance = parentObj.instance;
         this.default_language = parentObj.default_language || "de_DE";
     }
