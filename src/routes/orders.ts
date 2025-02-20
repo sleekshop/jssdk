@@ -6,12 +6,14 @@ export default class Orders {
 
     protected licence_username: string;
     protected licence_password: string;
+    protected licence_secret_key: string;
     protected default_language: string;
     protected instance: XiorInstance;
 
     constructor(parentObj: Sleekshop) {
         this.licence_username = parentObj.licence_username;
         this.licence_password = parentObj.licence_password;
+        this.licence_password = parentObj.licence_secret_key;
         this.instance = parentObj.instance;
         this.default_language = parentObj.default_language || "de_DE";
     }
@@ -20,98 +22,98 @@ export default class Orders {
      * set_order_details
      * @method setOrderDetails
      * @param {String} session
-     * @param {Number} id_payment_method
-     * @param {Number} id_delivery_method
-     * @param {String} delivery_companyname
-     * @param {String} delivery_department
-     * @param {String} delivery_salutation
-     * @param {String} delivery_firstname
-     * @param {String} delivery_lastname
-     * @param {String} delivery_street
-     * @param {String} delivery_number
-     * @param {String} delivery_zip
-     * @param {String} delivery_state
-     * @param {String} delivery_city
-     * @param {String} delivery_country
-     * @param {String} invoice_companyname
-     * @param {String} invoice_department
-     * @param {String} invoice_salutation
-     * @param {String} invoice_firstname
-     * @param {String} invoice_lastname
-     * @param {String} invoice_street
-     * @param {String} invoice_number
-     * @param {String} invoice_zip
-     * @param {String} invoice_state
-     * @param {String} invoice_city
-     * @param {String} invoice_country
-     * @param {String} note
-     * @param {String} email
-     * @param {String} phone
-     * @param {Array<Object>} attributes
+     * @param {Number} [id_payment_method]
+     * @param {Number} [id_delivery_method]
+     * @param {String} [delivery_companyname]
+     * @param {String} [delivery_department]
+     * @param {String} [delivery_salutation]
+     * @param {String} [delivery_firstname]
+     * @param {String} [delivery_lastname]
+     * @param {String} [delivery_street]
+     * @param {String} [delivery_number]
+     * @param {String} [delivery_zip]
+     * @param {String} [delivery_state]
+     * @param {String} [delivery_city]
+     * @param {String} [delivery_country]
+     * @param {String} [invoice_companyname]
+     * @param {String} [invoice_department]
+     * @param {String} [invoice_salutation]
+     * @param {String} [invoice_firstname]
+     * @param {String} [invoice_lastname]
+     * @param {String} [invoice_street]
+     * @param {String} [invoice_number]
+     * @param {String} [invoice_zip]
+     * @param {String} [invoice_state]
+     * @param {String} [invoice_city]
+     * @param {String} [invoice_country]
+     * @param {String} [note]
+     * @param {String} [email]
+     * @param {String} [phone]
+     * @param {Array<Object>} [attributes]
      * @return {Object} Object of product details.
      * @public
      */
     public async setOrderDetails(
         {
             session,
-            id_payment_method = null,
-            id_delivery_method = null,
-            delivery_companyname = null,
-            delivery_department = null,
-            delivery_salutation = null,
-            delivery_firstname = null,
-            delivery_lastname = null,
-            delivery_street = null,
-            delivery_number = null,
-            delivery_zip = null,
-            delivery_state = null,
-            delivery_city = null,
-            delivery_country = null,
-            invoice_companyname = null,
-            invoice_department = null,
-            invoice_salutation = null,
-            invoice_firstname = null,
-            invoice_lastname = null,
-            invoice_street = null,
-            invoice_number = null,
-            invoice_zip = null,
-            invoice_state = null,
-            invoice_city = null,
-            invoice_country = null,
-            note = null,
-            email = null,
-            phone = null,
-            attributes = null
+            id_payment_method,
+            id_delivery_method,
+            delivery_companyname,
+            delivery_department,
+            delivery_salutation,
+            delivery_firstname,
+            delivery_lastname,
+            delivery_street,
+            delivery_number,
+            delivery_zip,
+            delivery_state,
+            delivery_city,
+            delivery_country,
+            invoice_companyname,
+            invoice_department,
+            invoice_salutation,
+            invoice_firstname,
+            invoice_lastname,
+            invoice_street,
+            invoice_number,
+            invoice_zip,
+            invoice_state,
+            invoice_city,
+            invoice_country,
+            note,
+            email,
+            phone,
+            attributes
         }: {
             session: string;
-            id_payment_method?: number | null;
-            id_delivery_method?: number | null;
-            delivery_companyname?: string | null;
-            delivery_department?: string | null;
-            delivery_salutation?: string | null;
-            delivery_firstname?: string | null;
-            delivery_lastname?: string | null;
-            delivery_street?: string | null;
-            delivery_number?: string | null;
-            delivery_zip?: string | null;
-            delivery_state?: string | null;
-            delivery_city?: string | null;
-            delivery_country?: string | null;
-            invoice_companyname?: string | null;
-            invoice_department?: string | null;
-            invoice_salutation?: string | null;
-            invoice_firstname?: string | null;
-            invoice_lastname?: string | null;
-            invoice_street?: string | null;
-            invoice_number?: string | null;
-            invoice_zip?: string | null;
-            invoice_state?: string | null;
-            invoice_city?: string | null;
-            invoice_country?: string | null;
-            note?: string | null;
-            email?: string | null;
-            phone?: string | null;
-            attributes?: Array<object> | null;
+            id_payment_method?: number;
+            id_delivery_method?: number;
+            delivery_companyname?: string;
+            delivery_department?: string;
+            delivery_salutation?: string;
+            delivery_firstname?: string;
+            delivery_lastname?: string;
+            delivery_street?: string;
+            delivery_number?: string;
+            delivery_zip?: string;
+            delivery_state?: string;
+            delivery_city?: string;
+            delivery_country?: string;
+            invoice_companyname?: string;
+            invoice_department?: string;
+            invoice_salutation?: string;
+            invoice_firstname?: string;
+            invoice_lastname?: string;
+            invoice_street?: string;
+            invoice_number?: string;
+            invoice_zip?: string;
+            invoice_state?: string;
+            invoice_city?: string;
+            invoice_country?: string;
+            note?: string;
+            email?: string;
+            phone?: string;
+            attributes?: Array<object>;
         }
     ): Promise<object> {
 
@@ -155,7 +157,6 @@ export default class Orders {
         } catch (error) {
             return new ErrorObject().genericError(error);
         }
-
     }
 
     /**
@@ -184,107 +185,107 @@ export default class Orders {
      * update_order_details
      * @method updateOrderDetails
      * @param {Number} id_order
-     * @param {Number} id_payment_method
-     * @param {Number} id_delivery_method
-     * @param {String} order_state
-     * @param {String} order_payment_state
-     * @param {String} order_delivery_state
-     * @param {String} delivery_companyname
-     * @param {String} delivery_department
-     * @param {String} delivery_salutation
-     * @param {String} delivery_firstname
-     * @param {String} delivery_lastname
-     * @param {String} delivery_street
-     * @param {String} delivery_number
-     * @param {String} delivery_zip
-     * @param {String} delivery_state
-     * @param {String} delivery_city
-     * @param {String} delivery_country
-     * @param {String} invoice_companyname
-     * @param {String} invoice_department
-     * @param {String} invoice_salutation
-     * @param {String} invoice_firstname
-     * @param {String} invoice_lastname
-     * @param {String} invoice_street
-     * @param {String} invoice_number
-     * @param {String} invoice_zip
-     * @param {String} invoice_state
-     * @param {String} invoice_city
-     * @param {String} invoice_country
-     * @param {String} note
-     * @param {String} email
-     * @param {String} phone
-     * @param {Array<Object>} attributes
+     * @param {Number} [id_payment_method]
+     * @param {Number} [id_delivery_method]
+     * @param {String} [order_state]
+     * @param {String} [order_payment_state]
+     * @param {String} [order_delivery_state]
+     * @param {String} [delivery_companyname]
+     * @param {String} [delivery_department]
+     * @param {String} [delivery_salutation]
+     * @param {String} [delivery_firstname]
+     * @param {String} [delivery_lastname]
+     * @param {String} [delivery_street]
+     * @param {String} [delivery_number]
+     * @param {String} [delivery_zip]
+     * @param {String} [delivery_state]
+     * @param {String} [delivery_city]
+     * @param {String} [delivery_country]
+     * @param {String} [invoice_companyname]
+     * @param {String} [invoice_department]
+     * @param {String} [invoice_salutation]
+     * @param {String} [invoice_firstname]
+     * @param {String} [invoice_lastname]
+     * @param {String} [invoice_street]
+     * @param {String} [invoice_number]
+     * @param {String} [invoice_zip]
+     * @param {String} [invoice_state]
+     * @param {String} [invoice_city]
+     * @param {String} [invoice_country]
+     * @param {String} [note]
+     * @param {String} [email]
+     * @param {String} [phone]
+     * @param {Array<Object>} [attributes]
      * @return {Object} Object of product details.
      * @public
      */
     public async updateOrderDetails(
         {
             id_order,
-            id_payment_method = null,
-            id_delivery_method = null,
-            order_state = null,
-            order_payment_state = null,
-            order_delivery_state = null,
-            delivery_companyname = null,
-            delivery_department = null,
-            delivery_salutation = null,
-            delivery_firstname = null,
-            delivery_lastname = null,
-            delivery_street = null,
-            delivery_number = null,
-            delivery_zip = null,
-            delivery_state = null,
-            delivery_city = null,
-            delivery_country = null,
-            invoice_companyname = null,
-            invoice_department = null,
-            invoice_salutation = null,
-            invoice_firstname = null,
-            invoice_lastname = null,
-            invoice_street = null,
-            invoice_number = null,
-            invoice_zip = null,
-            invoice_state = null,
-            invoice_city = null,
-            invoice_country = null,
-            note = null,
-            email = null,
-            phone = null,
-            attributes = null
+            id_payment_method,
+            id_delivery_method,
+            order_state,
+            order_payment_state,
+            order_delivery_state,
+            delivery_companyname,
+            delivery_department,
+            delivery_salutation,
+            delivery_firstname,
+            delivery_lastname,
+            delivery_street,
+            delivery_number,
+            delivery_zip,
+            delivery_state,
+            delivery_city,
+            delivery_country,
+            invoice_companyname,
+            invoice_department,
+            invoice_salutation,
+            invoice_firstname,
+            invoice_lastname,
+            invoice_street,
+            invoice_number,
+            invoice_zip,
+            invoice_state,
+            invoice_city,
+            invoice_country,
+            note,
+            email,
+            phone,
+            attributes
         }: {
             id_order: number;
-            id_payment_method: number | null;
-            id_delivery_method: number | null;
-            order_state: string | null;
-            order_payment_state: string | null;
-            order_delivery_state: string | null;
-            delivery_companyname: string | null;
-            delivery_department: string | null;
-            delivery_salutation: string | null;
-            delivery_firstname: string | null;
-            delivery_lastname: string | null;
-            delivery_street: string | null;
-            delivery_number: string | null;
-            delivery_zip: string | null;
-            delivery_state: string | null;
-            delivery_city: string | null;
-            delivery_country: string | null;
-            invoice_companyname: string | null;
-            invoice_department: string | null;
-            invoice_salutation: string | null;
-            invoice_firstname: string | null;
-            invoice_lastname: string | null;
-            invoice_street: string | null;
-            invoice_number: string | null;
-            invoice_zip: string | null;
-            invoice_state: string | null;
-            invoice_city: string | null;
-            invoice_country: string | null;
-            note: string | null;
-            email: string | null;
-            phone: string | null;
-            attributes?: Array<object> | null;
+            id_payment_method?: number;
+            id_delivery_method?: number;
+            order_state?: string;
+            order_payment_state?: string;
+            order_delivery_state?: string;
+            delivery_companyname?: string;
+            delivery_department?: string;
+            delivery_salutation?: string;
+            delivery_firstname?: string;
+            delivery_lastname?: string;
+            delivery_street?: string;
+            delivery_number?: string;
+            delivery_zip?: string;
+            delivery_state?: string;
+            delivery_city?: string;
+            delivery_country?: string;
+            invoice_companyname?: string;
+            invoice_department?: string;
+            invoice_salutation?: string;
+            invoice_firstname?: string;
+            invoice_lastname?: string;
+            invoice_street?: string;
+            invoice_number?: string;
+            invoice_zip?: string;
+            invoice_state?: string;
+            invoice_city?: string;
+            invoice_country?: string;
+            note?: string;
+            email?: string;
+            phone?: string;
+            attributes?: Array<object>;
         }
     ): Promise<object> {
 
@@ -292,6 +293,7 @@ export default class Orders {
             const formData = new FormData();
             formData.append('licence_username', this.licence_username);
             formData.append('licence_password', this.licence_password);
+            formData.append('licence_secret_key', this.licence_secret_key);
             formData.append('request', "update_order_details");
             formData.append('id_order', id_order.toString());
             if (id_payment_method) formData.append('id_payment_method', id_payment_method.toString());
@@ -326,13 +328,11 @@ export default class Orders {
             if (phone) formData.append('phone', phone);
             if (attributes) formData.append('attributes', JSON.stringify(attributes));
 
-
             let updateOrderDetails = await this.instance.post('', formData);
             return updateOrderDetails.data;
         } catch (error) {
             return new ErrorObject().genericError(error);
         }
-
     }
 
     /**

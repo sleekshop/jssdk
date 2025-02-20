@@ -29,7 +29,7 @@ export default class Search {
      * @param {String} order_type
      * @param {Number} left_limit
      * @param {Number} right_limit
-     * @param {Array<String>} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {Object} Object of product details.
      * @public
      */
@@ -51,7 +51,7 @@ export default class Search {
             order_type?: string;
             left_limit?: number;
             right_limit?: number;
-            needed_attributes?: Array<string>;
+            needed_attributes?: Array<string> | Array<Array<string>>,
         }
     ): Promise<object> {
 
@@ -87,7 +87,7 @@ export default class Search {
      * @param {String} order_type
      * @param {Number} left_limit
      * @param {Number} right_limit
-     * @param {Array<String>} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {Object} Object of content details.
      * @public
      */
@@ -107,7 +107,7 @@ export default class Search {
             order_type?: string;
             left_limit?: number;
             right_limit?: number;
-            needed_attributes?: Array<string>;
+            needed_attributes?: Array<string> | Array<Array<string>>;
         }
     ): Promise<object> {
 
@@ -181,7 +181,7 @@ export default class Search {
      * @param {Number} right_limit
      * @param {Array} order_columns
      * @param {String} order_type
-     * @param {Array} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {Object} Object of order details.
      * @public
      */
@@ -201,7 +201,7 @@ export default class Search {
             right_limit?: number;
             order_columns?: Array<any>;
             order_type?: string;
-            needed_attributes?: Array<string>;
+            needed_attributes?: Array<string> | Array<Array<string>>;
         }
     ): Promise<object> {
 
@@ -235,7 +235,7 @@ export default class Search {
      * @param {String} order
      * @param {Number} left_limit
      * @param {Number} right_limit
-     * @param {Array<String>} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {Object} Object of user details.
      * @public
      */
@@ -253,7 +253,7 @@ export default class Search {
             order?: string;
             left_limit?: number;
             right_limit?: number;
-            needed_attributes?: Array<string>;
+            needed_attributes?: Array<string> | Array<Array<string>>;
         }
     ): Promise<object> {
 
@@ -287,7 +287,7 @@ export default class Search {
      * @param {String} order_type
      * @param {Number} left_limit
      * @param {Number} right_limit
-     * @param {Array<String>} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      */
     public async searchWarehouseEntities(
         {
@@ -305,7 +305,7 @@ export default class Search {
             order_type?: string;
             left_limit?: number;
             right_limit?: number;
-            needed_attributes?: Array<string>;
+            needed_attributes?: Array<string> | Array<Array<string>>,
         }
     ): Promise<object> {
 

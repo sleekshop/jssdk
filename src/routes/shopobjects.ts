@@ -25,7 +25,7 @@ export default class ShopObjects {
      * @param {Number} id_product
      * @param {String} language
      * @param {String} country
-     * @param {Array<String>} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {Object} Object of product details.
      * @public
      */
@@ -39,7 +39,7 @@ export default class ShopObjects {
             id_product: number;
             language?: string | null;
             country?: string;
-            needed_attributes?: Array<string>;
+            needed_attributes?: Array<string> | Array<Array<string>>;
         }
     ): Promise<object> {
 
@@ -103,7 +103,7 @@ export default class ShopObjects {
      * @method seoGetProductDetails
      * @param {String} permalink
      * @param {String} country
-     * @param {Array<String>} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {Object} Object of product details.
      * @public
      */
@@ -115,7 +115,7 @@ export default class ShopObjects {
         }: {
             permalink: string;
             country?: string;
-            needed_attributes?: Array<string>;
+            needed_attributes?: Array<string> | Array<Array<string>>;
         }
     ): Promise<object> {
 

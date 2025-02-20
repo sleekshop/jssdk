@@ -72,7 +72,7 @@ export default class Categories {
      * @param {String} order
      * @param {Number} left_limit
      * @param {Number} right_limit
-     * @param {Array} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {IProductsInCategory} Object of products in category.
      * @public
      */
@@ -95,7 +95,7 @@ export default class Categories {
             order?: string,
             left_limit?: number,
             right_limit?: number,
-            needed_attributes?: Array<string>
+            needed_attributes?: Array<string> | Array<Array<string>>,
         }
     ): Promise<IProductsInCategory | object> {
 
@@ -133,7 +133,7 @@ export default class Categories {
      * @param {String} order
      * @param {Number} left_limit
      * @param {Number} right_limit
-     * @param {Array} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {IContentsInCategory} Object of products in category.
      * @public
      */
@@ -154,7 +154,7 @@ export default class Categories {
             order?: string,
             left_limit?: number,
             right_limit?: number,
-            needed_attributes?: Array<string>
+            needed_attributes?: Array<string> | Array<Array<string>>
         }
     ): Promise<IContentsInCategory | object> {
 
@@ -191,7 +191,7 @@ export default class Categories {
      * @param {String} order
      * @param {Number} left_limit
      * @param {Number} right_limit
-     * @param {Array} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {IShopobjectsInCategory} Object of products in category.
      * @public
      */
@@ -213,7 +213,7 @@ export default class Categories {
             order?: string,
             left_limit?: number,
             right_limit?: number,
-            needed_attributes?: Array<string>,
+            needed_attributes?: Array<string> | Array<Array<string>>
         }
     ): Promise<IShopobjectsInCategory | object> {
 
@@ -251,7 +251,7 @@ export default class Categories {
      * @param {Number} left_limit
      * @param {Number} right_limit
      * @param {Number} depth
-     * @param {Array} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {IDumpCategory} Object of products in category.
      * @public
      */
@@ -275,7 +275,7 @@ export default class Categories {
             left_limit?: number,
             right_limit?: number,
             depth?: number,
-            needed_attributes?: Array<string>,
+            needed_attributes?: Array<string> | Array<Array<string>>,
         }
     ): Promise<IDumpCategory | object> {
 
@@ -314,7 +314,7 @@ export default class Categories {
      * @param {String} order
      * @param {Number} left_limit
      * @param {Number} right_limit
-     * @param {Array} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {Object} Object of products in category.
      * @public
      */
@@ -337,7 +337,7 @@ export default class Categories {
             order?: string,
             left_limit?: number,
             right_limit?: number,
-            needed_attributes?: Array<string>,
+            needed_attributes?: Array<string> | Array<Array<string>>,
         }
     ): Promise<object> {
 
@@ -373,7 +373,7 @@ export default class Categories {
      * @param {String} order
      * @param {Number} left_limit
      * @param {Number} right_limit
-     * @param {Array} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {Object} Object of products in category.
      * @public
      */
@@ -392,7 +392,7 @@ export default class Categories {
             order?: string,
             left_limit?: number,
             right_limit?: number,
-            needed_attributes?: Array<string>,
+            needed_attributes?: Array<string> | Array<Array<string>>,
         }
     ): Promise<object> {
 
@@ -425,7 +425,7 @@ export default class Categories {
      * @param {String} order
      * @param {Number} left_limit
      * @param {Number} right_limit
-     * @param {Array} needed_attributes
+     * @param {Array<String|Array<String>>} needed_attributes
      * @return {Object} Object of products in category.
      * @public
      */
@@ -444,7 +444,7 @@ export default class Categories {
             order?: string,
             left_limit?: number,
             right_limit?: number,
-            needed_attributes?: Array<string>,
+            needed_attributes?: Array<string> | Array<Array<string>>,
         }
     ): Promise<object> {
 
