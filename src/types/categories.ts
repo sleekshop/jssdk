@@ -1,312 +1,117 @@
+export interface ICategory {
+    name: string;
+    prio: number;
+    id: number;
+    id_parent: number;
+    label: string;
+    seo: {
+        permalink: string;
+        title: string;
+        description: string;
+        keywords: string;
+    };
+    attributes: {};
+}
+
 export interface ICategories {
     object: string;
-    parent_category: {
-        name: string;
-        prio: number;
-        id: number;
-        id_parent: number;
-        label: string;
-        seo: {
-            permalink: string;
-            title: string;
-            description: string;
-            keywords: string;
-        };
-        attributes: {};
+    parent_category: ICategory;
+    categories: ICategory[];
+}
+
+export interface IProduct {
+    object: string;
+    id: number;
+    name: string;
+    creation_date: string;
+    class: string;
+    seo: {
+        permalink: string;
+        title: string;
+        description: string;
+        keywords: string;
     };
-    categories: [
-        {
+    availability: {
+        quantity: number;
+        quantity_warning: number;
+        allow_override: number;
+        active: number;
+    };
+    metadata: {
+        element_number: string;
+        taxclass: {
             name: string;
-            prio: number;
+            calculation: string;
+            value: number;
+        };
+        length: number;
+        width: number;
+        height: number;
+        weight: number;
+        notes: string;
+    };
+    attributes: {
+        [key: string]: {
+            type: string;
             id: number;
-            id_parent: number;
+            name: string;
             label: string;
-            seo: {
-                permalink: string;
-                title: string;
-                description: string;
-                keywords: string;
-            };
-            attributes: {};
-        }
-    ];
+            value: string | number;
+        };
+    };
+    variations: {
+        [key: string]: IProduct;
+    };
 }
 
 export interface IProductsInCategory {
     object: string;
-    category: {
-        id: number;
-        name: string;
-        prio: number;
-        id_parent: number;
-        label: string;
-        seo: {
-            permalink: string;
-            title: string;
-            description: string;
-            keywords: string;
-        };
-        attributes: {};
-        products: {
-            [key: string]: {
-                object: string;
-                id: number;
-                name: string;
-                creation_date: string;
-                class: string;
-                seo: {
-                    permalink: string;
-                    title: string;
-                    description: string;
-                    keywords: string;
-                };
-                availability: {
-                    quantity: number;
-                    quantity_warning: number;
-                    allow_override: number;
-                    active: number;
-                };
-                metadata: {
-                    element_number: string;
-                    taxclass: {
-                        name: string;
-                        calculation: string;
-                        value: number;
-                    };
-                    length: number;
-                    width: number;
-                    height: number;
-                    weight: number;
-                    notes: string;
-                };
-                attributes: {
-                    [key: string]: {
-                        type: string;
-                        id: number;
-                        name: string;
-                        label: string;
-                        value: string | number;
-                    };
-                };
-                variations: {
-                    [key: string]: {
-                        object: string;
-                        id: number;
-                        name: string;
-                        creation_date: string;
-                        class: string;
-                        seo: {
-                            permalink: string;
-                            title: string;
-                            description: string;
-                            keywords: string;
-                        };
-                        availability: {
-                            quantity: number;
-                            quantity_warning: number;
-                            allow_override: number;
-                            active: number;
-                        };
-                        metadata: {
-                            element_number: string;
-                            taxclass: {
-                                name: string;
-                                calculation: string;
-                                value: number;
-                            };
-                            length: number;
-                            width: number;
-                            height: number;
-                            weight: number;
-                            notes: string;
-                        };
-                        attributes: {
-                            [key: string]: {
-                                type: string;
-                                id: number;
-                                name: string;
-                                label: string;
-                                value: string | number;
-                            };
-                        };
-                        variations: {};
-                    };
-                };
-            };
+    category: ICategory;
+    products: {
+        [key: string]: IProduct;
+    };
+}
+
+export interface IContent {
+    object: string;
+    id: number;
+    name: string;
+    creation_date: string;
+    class: string;
+    seo: {
+        permalink: string;
+        title: string;
+        description: string;
+        keywords: string;
+    };
+    attributes: {
+        [key: string]: {
+            type: string;
+            id: number;
+            name: string;
+            label: string;
+            value: string | number;
         };
     };
+    variations: {};
 }
 
 export interface IContentsInCategory {
     object: string;
-    category: {
-        id: number;
-        name: string;
-        prio: number;
-        id_parent: number;
-        label: string;
-        seo: {
-            permalink: string;
-            title: string;
-            description: string;
-            keywords: string;
-        };
-        attributes: {};
-    };
+    category: ICategory;
     contents: {
-        [key: string]: {
-            object: string;
-            id: number;
-            name: string;
-            creation_date: string;
-            class: string;
-            seo: {
-                permalink: string;
-                title: string;
-                description: string;
-                keywords: string;
-            };
-            attributes: {
-                [key: string]: {
-                    type: string;
-                    id: number;
-                    name: string;
-                    label: string;
-                    value: string | number;
-                };
-            };
-            variations: {};
-        };
+        [key: string]: IContent;
     };
 }
 
 export interface IShopobjectsInCategory {
     object: string;
-    category: {
-        id: number;
-        name: string;
-        prio: number;
-        id_parent: number;
-        label: string;
-        seo: {
-            permalink: string;
-            title: string;
-            description: string;
-            keywords: string;
-        };
-        attributes: {};
-    };
+    category: ICategory;
     products: {
-        [key: string]: {
-            object: string;
-            id: number;
-            name: string;
-            creation_date: string;
-            class: string;
-            seo: {
-                permalink: string;
-                title: string;
-                description: string;
-                keywords: string;
-            };
-            availability: {
-                quantity: number;
-                quantity_warning: number;
-                allow_override: number;
-                active: number;
-            };
-            metadata: {
-                element_number: string;
-                taxclass: {
-                    name: string;
-                    calculation: string;
-                    value: number;
-                };
-                length: number;
-                width: number;
-                height: number;
-                weight: number;
-                notes: string;
-            };
-            attributes: {
-                [key: string]: {
-                    type: string;
-                    id: number;
-                    name: string;
-                    label: string;
-                    value: string | number;
-                };
-            };
-            variations: {
-                [key: string]: {
-                    object: string;
-                    id: number;
-                    name: string;
-                    creation_date: string;
-                    class: string;
-                    seo: {
-                        permalink: string;
-                        title: string;
-                        description: string;
-                        keywords: string;
-                    };
-                    availability: {
-                        quantity: number;
-                        quantity_warning: number;
-                        allow_override: number;
-                        active: number;
-                    };
-                    metadata: {
-                        element_number: string;
-                        taxclass: {
-                            name: string;
-                            calculation: string;
-                            value: number;
-                        };
-                        length: number;
-                        width: number;
-                        height: number;
-                        weight: number;
-                        notes: string;
-                    };
-                    attributes: {
-                        [key: string]: {
-                            type: string;
-                            id: number;
-                            name: string;
-                            label: string;
-                            value: string | number;
-                        };
-                    };
-                    variations: {};
-                };
-            };
-        };
+        [key: string]: IProduct;
     };
     contents: {
-        [key: string]: {
-            object: string;
-            id: number;
-            name: string;
-            creation_date: string;
-            class: string
-            seo: {
-                permalink: string;
-                title: string;
-                description: string;
-                keywords: string;
-            };
-            attributes: {
-                [key: string]: {
-                    type: string;
-                    id: number;
-                    name: string;
-                    label: string;
-                    value: string | number;
-                };
-            };
-            variations: object;
-        };
+        [key: string]: IContent;
     };
 }
 
@@ -342,91 +147,7 @@ export interface IDumpCategory {
             name: string;
         };
         products: {
-            [key: string]: {
-                object: string;
-                id: number;
-                name: string;
-                creation_date: string;
-                class: string;
-                seo: {
-                    permalink: string;
-                    title: string;
-                    description: string;
-                    keywords: string;
-                };
-                availability: {
-                    quantity: number;
-                    quantity_warning: number;
-                    allow_override: number;
-                    active: number;
-                };
-                metadata: {
-                    element_number: string;
-                    taxclass: {
-                        name: string;
-                        calculation: string;
-                        value: number;
-                    };
-                    length: number;
-                    width: number;
-                    height: number;
-                    weight: number;
-                    notes: string;
-                };
-                attributes: {
-                    [key: string]: {
-                        type: string;
-                        id: number;
-                        name: string;
-                        label: string;
-                        value: string | number;
-                    };
-                };
-                variations: {
-                    [key: string]: {
-                        object: string;
-                        id: number;
-                        name: string;
-                        creation_date: string;
-                        class: string;
-                        seo: {
-                            permalink: string;
-                            title: string;
-                            description: string;
-                            keywords: string;
-                        };
-                        availability: {
-                            quantity: number;
-                            quantity_warning: number;
-                            allow_override: number;
-                            active: number;
-                        };
-                        metadata: {
-                            element_number: string;
-                            taxclass: {
-                                name: string;
-                                calculation: string;
-                                value: number;
-                            };
-                            length: number;
-                            width: number;
-                            height: number;
-                            weight: number;
-                            notes: string;
-                        };
-                        attributes: {
-                            [key: string]: {
-                                type: string;
-                                id: number;
-                                name: string;
-                                label: string
-                                value: string | number;
-                            };
-                        };
-                        variations: {};
-                    };
-                };
-            };
+            [key: string]: IProduct;
         };
     };
     contents_in_category: {
@@ -435,29 +156,7 @@ export interface IDumpCategory {
             name: string;
         };
         contents: {
-            [key: string]: {
-                object: string;
-                id: number;
-                name: string;
-                creation_date: string;
-                class: string;
-                seo: {
-                    permalink: string;
-                    title: string;
-                    description: string;
-                    keywords: string;
-                };
-                attributes: {
-                    [key: string]: {
-                        type: string;
-                        id: number;
-                        name: string;
-                        label: string;
-                        value: string | number;
-                    };
-                };
-                variations: {};
-            };
+            [key: string]: IContent;
         };
     };
 }
