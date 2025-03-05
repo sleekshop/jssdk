@@ -10,7 +10,12 @@ export interface ICategory {
         description: string;
         keywords: string;
     };
-    attributes: {};
+    attributes: {
+        [key: string]: {
+            name: string;
+            value: string;
+        }
+    };
 }
 
 export interface ICategories {
@@ -93,7 +98,6 @@ export interface IContent {
             value: string | number;
         };
     };
-    variations: {};
 }
 
 export interface IContentsInCategory {
@@ -115,32 +119,41 @@ export interface IShopobjectsInCategory {
     };
 }
 
+export interface IParentCategory {
+    name: string;
+    prio: number;
+    id: number;
+    id_parent: number;
+    label: string;
+    path: {
+        name: string;
+        nodes: [
+            {
+                id: number;
+                name: string;
+            }
+        ];
+    };
+    seo: {
+        permalink: string;
+        title: string;
+        description: string;
+        keywords: string;
+    };
+    attributes: {
+        [key: string]: {
+            name: string;
+            value: string;
+        }
+    };
+}
+
 export interface IDumpCategory {
     object: string;
-    parent_category: {
-        name: string;
-        prio: number;
-        id: number;
-        id_parent: number;
-        label: string;
-        path: {
-            name: string;
-            nodes: [
-                {
-                    id: number;
-                    name: string;
-                }
-            ];
-        };
-        seo: {
-            permalink: string;
-            title: string;
-            description: string;
-            keywords: string;
-        };
-        attributes: {};
+    parent_category: IParentCategory;
+    shop_categories: {
+        [key: string]: IDumpCategory;
     };
-    shop_categories: {};
     products_in_category: {
         category: {
             id_category: number;
