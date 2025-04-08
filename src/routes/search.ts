@@ -232,7 +232,7 @@ export default class Search {
      * @method searchUsers
      * @param {Object} constraint
      * @param {Array<String>} order_columns
-     * @param {String} order
+     * @param {String} order_type
      * @param {Number} left_limit
      * @param {Number} right_limit
      * @param {Array<String|Array<String>>} needed_attributes
@@ -243,14 +243,14 @@ export default class Search {
         {
             constraint = {},
             order_columns = [],
-            order = "ASC",
+            order_type = "ASC",
             left_limit = 0,
             right_limit = 0,
             needed_attributes = []
         }: {
             constraint?: object;
             order_columns?: Array<string>;
-            order?: string;
+            order_type?: string;
             left_limit?: number;
             right_limit?: number;
             needed_attributes?: Array<string> | Array<Array<string>>;
@@ -265,7 +265,7 @@ export default class Search {
             formData.append('request', "search_users");
             formData.append('constraint', JSON.stringify(constraint));
             formData.append('order_columns', JSON.stringify(order_columns));
-            formData.append('order', order);
+            formData.append('order_type', order_type);
             formData.append('left_limit', left_limit.toString());
             formData.append('right_limit', right_limit.toString());
             formData.append('needed_attributes', JSON.stringify(needed_attributes));
