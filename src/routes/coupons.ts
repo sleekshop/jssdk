@@ -23,7 +23,7 @@ export default class Coupons {
      * add_coupons
      * @method addCoupons
      * @param {String} session
-     * @param {Array} coupons
+     * @param {Array<Array<String>>} coupons
      * @return {Object} Object of added coupons.
      */
     public async addCoupons(
@@ -33,7 +33,7 @@ export default class Coupons {
         }:
         {
             session: string,
-            coupons: Array<string>
+            coupons: Array<Array<string>>
         }
     ): Promise<object> {
 
@@ -59,18 +59,24 @@ export default class Coupons {
      * @param {Number} count
      * @param {String} name
      * @param {Number} amount
+     * @param {String} type
+     * @param {String} code
      * @return {Object} Object of created coupons.
      */
     public async createCoupons(
         {
             count,
             name,
-            amount
+            amount,
+            type,
+            code
         }:
         {
             count: number,
             name: string,
-            amount: number
+            amount: number,
+            type: string,
+            code?: string
         }
     ): Promise<object> {
 
@@ -85,6 +91,8 @@ export default class Coupons {
             formData.append('count', count.toString());
             formData.append('name', name);
             formData.append('amount', amount.toString());
+            formData.append('type', type);
+            if (code) formData.append('code', code);
 
             let createCoupons = await this.instance.post('', formData);
             return createCoupons.data;
