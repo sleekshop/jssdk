@@ -184,9 +184,9 @@ public async applicationApiCall({application, app_request, args}:{application: s
 ```
 
 ```javascript
-- **Parameter**: `application` (String) -
-- **Parameter**: `app_request` (String) -
-- **Parameter**: `args` (Object) -
+- **Parameter**: `application` (String) - 
+- **Parameter**: `app_request` (String) - 
+- **Parameter**: `args` (Object) - 
 - **Returns**: Object Object of application api call.
 - **Returns**: object
 ```
@@ -567,12 +567,12 @@ public async deleteClassAttributes({id_class,attributes,}: {id_class: number;att
 ### `.addCoupons()`
 
 ```typescript
-public async addCoupons({session,coupons}:{session: string,coupons: Array<string>}): Promise<object> {
+public async addCoupons({session,coupons}:{session: string,coupons: Array<Array<string>>}): Promise<object> {
 ```
 
 ```javascript
 - **Parameter**: `session` (String) - 
-- **Parameter**: `coupons` (Array) - 
+- **Parameter**: `coupons` (Array<Array<String>>) - 
 - **Returns**: Object Object of added coupons.
 - **Returns**: object
 ```
@@ -582,13 +582,15 @@ public async addCoupons({session,coupons}:{session: string,coupons: Array<string
 ### `.createCoupons()`
 
 ```typescript
-public async createCoupons({count,name,amount}:{count: number,name: string,amount: number}): Promise<object> {
+public async createCoupons({count,name,amount,type,code}:{count: number,name: string,amount: number,type: string,code?: string}): Promise<object> {
 ```
 
 ```javascript
 - **Parameter**: `count` (Number) - 
 - **Parameter**: `name` (String) - 
 - **Parameter**: `amount` (Number) - 
+- **Parameter**: `type` (String) - 
+- **Parameter**: `code` (String) - 
 - **Returns**: Object Object of created coupons.
 - **Returns**: object
 ```
@@ -894,13 +896,13 @@ public async searchOrders({constraint = {},language = null,left_limit = 0,right_
 ### `.searchUsers()`
 
 ```typescript
-public async searchUsers({constraint = {},order_columns = [],order = "ASC",left_limit = 0,right_limit = 0,needed_attributes = []}: {constraint?: object;order_columns?: Array<string>;order?: string;left_limit?: number;right_limit?: number;needed_attributes?: Array<string> | Array<Array<string>>;}): Promise<object> {
+public async searchUsers({constraint = {},order_columns = [],order_type = "ASC",left_limit = 0,right_limit = 0,needed_attributes = []}: {constraint?: object;order_columns?: Array<string>;order_type?: string;left_limit?: number;right_limit?: number;needed_attributes?: Array<string> | Array<Array<string>>;}): Promise<object> {
 ```
 
 ```javascript
 - **Parameter**: `constraint` (Object) - 
 - **Parameter**: `order_columns` (Array<String>) - 
-- **Parameter**: `order` (String) - 
+- **Parameter**: `order_type` (String) - 
 - **Parameter**: `left_limit` (Number) - 
 - **Parameter**: `right_limit` (Number) - 
 - **Parameter**: `needed_attributes` (Array<String|Array<String>>) - 
@@ -1492,5 +1494,3 @@ public async updateWebhook({name,url,parameter}: {name: string;url: string;param
 - **Returns**: Object Object of updated webhook.
 - **Returns**: object
 ```
-
----
