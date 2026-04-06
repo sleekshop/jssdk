@@ -582,7 +582,7 @@ public async addCoupons({session,coupons}:{session: string,coupons: Array<Array<
 ### `.createCoupons()`
 
 ```typescript
-public async createCoupons({count,name,amount,type,code}:{count: number,name: string,amount: number,type: string,code?: string}): Promise<object> {
+public async createCoupons({count,name,amount,type,code,attributes}:{count: number,name: string,amount: number,type: string,code?: string,attributes?: object}): Promise<object> {
 ```
 
 ```javascript
@@ -591,6 +591,7 @@ public async createCoupons({count,name,amount,type,code}:{count: number,name: st
 - **Parameter**: `amount` (Number) - 
 - **Parameter**: `type` (String) - 
 - **Parameter**: `code` (String) - 
+- **Parameter**: `attributes` (Object) - 
 - **Returns**: Object Object of created coupons.
 - **Returns**: object
 ```
