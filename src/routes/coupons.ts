@@ -61,6 +61,7 @@ export default class Coupons {
      * @param {Number} amount
      * @param {String} type
      * @param {String} code
+     * @param {Object} attributes
      * @return {Object} Object of created coupons.
      */
     public async createCoupons(
@@ -69,14 +70,16 @@ export default class Coupons {
             name,
             amount,
             type,
-            code
+            code,
+            attributes
         }:
         {
             count: number,
             name: string,
             amount: number,
             type: string,
-            code?: string
+            code?: string,
+            attributes?: object
         }
     ): Promise<object> {
 
@@ -93,6 +96,7 @@ export default class Coupons {
             formData.append('amount', amount.toString());
             formData.append('type', type);
             if (code) formData.append('code', code);
+            if (attributes) formData.append('attributes', JSON.stringify(attributes));
 
             let createCoupons = await this.instance.post('', formData);
             return createCoupons.data;
